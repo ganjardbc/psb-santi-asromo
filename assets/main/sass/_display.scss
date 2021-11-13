@@ -1,0 +1,94 @@
+.display-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    &.nowrap {
+        flex-wrap: nowrap;
+    }
+    &.space-between {
+        justify-content: space-between;
+    }
+    &.right {
+        justify-content: flex-end;
+    }
+    &.left {
+        justify-content: flex-start;
+    }
+    &.center {
+        justify-content: center;
+    }
+    &.column {
+        flex-direction: column;
+    }
+    &.row {
+        flex-direction: row;
+    }
+    &.align-center {
+        align-items: center;
+    }
+    &.align-right {
+        justify-content: flex-end;
+    }
+    &.display-mobile {
+        @media (max-width: $min-width) {
+            display: block;
+        }
+    }
+    &.display-mobile-column {
+        @media (max-width: $min-width) {
+            flex-direction: column;
+        }
+        &.display-mobile-center {
+            @media (max-width: $min-width) {
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    &.row-reverse {
+        flex-direction: row-reverse;
+    }
+    &.column-reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+.display-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    overflow-y: auto;
+    &.bg-main {
+        background-color: $main-color;
+    }
+    &.bg-white {
+        background-color: #fff;
+    }
+    &.bg-image {
+        background-size: cover;
+        background-position: center;
+	    background-repeat: no-repeat;
+        background-color: #fff;
+    }
+}
+
+.show-on-mobile {
+    display: none;
+    @media (max-width: $min-width) {
+        display: block;
+    }
+}
+
+.show-on-desktop {
+    display: block;
+    @media (max-width: $min-width) {
+        display: none;
+    }
+}

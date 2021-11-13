@@ -1,0 +1,364 @@
+.card {
+    position: relative;
+    width: calc(100% - 40px);
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    &.mobile-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        .cover {
+            width: 200px;
+            height: 200px;
+        }
+        .left {
+            position: relative;
+            margin-bottom: 0;
+        }
+        .right {
+            position: relative;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+    .left {
+        margin-bottom: 20px;
+    }
+    .right {
+        padding: 0 20px; 
+        width: calc(100% - 40px);
+    }
+    .cover {
+        width: 100%; 
+        height: 240px; 
+        background-color: #000; 
+        border-radius: 0; 
+        overflow: hidden;
+    }
+}
+
+.card-popup {
+    position: relative;
+    width: 600px;
+    padding: 20px;
+    margin: auto;
+    @media (max-width: $min-width) {
+        width: calc(100% - 50px);
+    }
+}
+
+.card-small-profile {
+    position: relative;
+    height: 30px;
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    .image {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background-color: $tiny-grey;
+    }
+    .label {
+        margin-top: 7px;
+        margin-left: 7px;
+        margin-right: 10px;
+        font-size: 13px;
+        color: $black;
+        font-weight: bold;
+    }
+    &:hover {
+        background-color: $white-grey;
+        cursor: pointer;
+    }
+    @media (max-width: $min-width) {
+        .label {
+            display: none;
+        }
+    }
+}
+
+.card-search {
+    position: relative;
+    margin-top: -1px;
+    width: 400px;
+    height: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    overflow: hidden;
+    &.full {
+        width: 100%;
+    }
+    &.mobile {
+        @media (max-width: $min-width) {
+            width: 40px;
+            .field {
+                display: none;
+            }
+        }
+    }
+    .field {
+        border-radius: 0;
+    }
+    .btn {
+        border-radius: 0;
+    }
+}
+
+.card-alert {
+    position: relative;
+    width: 300px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: $shadow;
+    border: 1px $border solid;
+    @media (max-width: $min-width) {
+        width: calc(100% - 40px);
+    }
+    &.no-color {
+        background-color: rgba($color: #000, $alpha: 0.24);
+    }
+    &.big {
+        width: 600px;
+        @media (max-width: $min-width) {
+            width: calc(100% - 10px);
+        }
+    }
+    &.full {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+    &.card-alert-mobile {
+        @media (max-width: $min-width) {
+            width: 100%;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: 0 0 0 0 #fff;
+            border: 0 #fff solid;
+        }
+    }
+}
+
+.card-article {
+    position: relative;
+    width: 100%;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: row;
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+    .cover {
+        position: relative;
+        width: calc(100% - 60px);
+        margin-left: 30px;
+        margin-right: 30px;
+        height: 320px;
+        overflow: hidden;
+    }
+    .detail {
+        position: relative;
+        width: calc(100% - 60px);
+        padding: 15px 30px;
+    }
+}
+
+.card-capsule {
+    padding: 4px 10px 0 10px;
+    border-radius: 20px;
+    background-color: $white-grey;
+    color: $light-grey;
+    font-weight: bold;
+    border: 0.1px $light-grey solid;
+    font-size: 13px;
+    height: 18px;
+    &.active {
+        background-color: rgba($color: $teal, $alpha: 0.1);
+        color: $green;
+        border: 0.1px $green solid;
+    }
+    &.inactive {
+        background-color: rgba($color: $pink, $alpha: 0.1);
+        color: $red;
+        border: 0.1px $red solid;
+    }
+    &.wip {
+        background-color: rgba($color: $yellow, $alpha: 0.1);
+        color: $orange;
+        border: 0.1px $orange solid;
+    }
+}
+
+.card-scanner {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 8px;
+    border: $border;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    &:hover {
+        background-color: $white-grey;
+        .icon {
+            .icn {
+                transition: 0.2s;
+                font-size: 88px;
+                color: $black;
+            }
+            .lbl {
+                color: $black;
+            }
+        }
+    }
+    .icon {
+        @include post_center(absolute);
+        text-align: center;
+        .icn {
+            transition: 0.2s;
+            font-size: 68px;
+            color: $grey;
+            margin-bottom: 20px;
+        }
+        .lbl {
+            font-size: 18px;
+            font-weight: bold;
+            color: $grey;
+        }
+    }
+}
+
+.card-toast {
+    position: fixed;
+    z-index: 1000;
+    top: 80px;
+    left: 50%;
+	-webkit-transform: translate(-50%, 0);
+	   -moz-transform: translate(-50%, 0);
+		    -ms-transform: translate(-50%, 0);
+		     -o-transform: translate(-50%, 0);
+		        transform: translate(-50%, 0);
+    
+    &.hide {
+        top: -100px;
+        transition: 0.5s;
+    }
+    &.show {
+        top: 80px;
+        transition: 0.5s;
+    }
+    .card-toast-content {
+        position: relative;
+        max-width: 300px;
+        border-radius: 6px;
+        overflow: hidden;
+        background-color: rgba($color: #000, $alpha: 0.8);
+        box-shadow: $shadow-bold;
+        .left {
+            position: relative;
+            width: calc(100% - 60px);
+            padding: 12px 15px;
+            border-left: 5px rgba($color: #000, $alpha: 0.2) solid;
+            .ttl {
+                font-weight: bold;
+                font-size: 11pt;
+                color: #fff;
+            }
+            .subttl {
+                font-weight: normal;
+                font-size: 10pt;
+                color: #fff;
+            }
+        }
+        .right {
+            position: relative;
+            width: 30px;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                background-color: rgba($color: #000, $alpha: 0.2);
+            }
+            .icn {
+                @include post_center(absolute);
+                color: #fff;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.card-value {
+    position: relative;
+    padding: 5px 8px;
+    border-radius: 45px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: rgba($color: $green, $alpha: 1);
+    border: 1px $green solid;
+    color: #fff;
+    &.red {
+        background-color: rgba($color: $red, $alpha: 0.1);
+        border: 1px $red solid;
+        color: $red;
+    }
+    &.yellow {
+        background-color: rgba($color: $yellow, $alpha: 0.1);
+        border: 1px $yellow solid;
+        color: $yellow;
+    }
+    &.main {
+        background-color: rgba($color: $main-color, $alpha: 0.1);
+        border: 1px $main-color solid;
+        color: $black;
+    }
+}
+
+.card-check {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: #fff;
+    color: $main-color;
+    .icn {
+        @include post_center(absolute);
+        font-size: 30px;
+    }
+}
+
+.card-step {
+    position: relative;
+    width: calc(100% - 30px);
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    .number {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: 2px $main-color solid;
+        .val {
+            font-size: 18px;
+            font-weight: 600;
+            color: $black;
+            @include post_center(absolute);
+        }
+    }
+    .info {
+        position: relative;
+        width: calc(100% - 40px);
+    }
+}
