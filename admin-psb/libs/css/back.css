@@ -1,0 +1,55 @@
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+			padding:5px ;
+		}
+		.form-div-pendaftaran{
+	      padding:5px;
+	    }
+	    .form-label-pendaftaran{
+	      text-align: right;
+	      margin-top: 14px;
+	    }
+		#custom-search-input{
+		    padding: 3px;
+		    border: solid 1px #E4E4E4;
+		    border-radius: 6px;
+		    background-color: #fff;
+		}
+
+		#custom-search-input input{
+		    border: 0;
+		    box-shadow: none;
+		}
+		.modal-header .close {
+		    margin-top: -27px;
+		}
+		#custom-search-input button{
+		    margin: 2px 0 0 0;
+		    background: none;
+		    box-shadow: none;
+		    border: 0;
+		    color: #666666;
+		    padding: 0 8px 0 10px;
+		    border-left: solid 1px #ccc;
+		}
+
+		#custom-search-input button:hover{
+		    border: 0;
+		    box-shadow: none;
+		    border-left: solid 1px #ccc;
+		}
+
+		#custom-search-input .glyphicon-search{
+		    font-size: 23px;
+		}
+		.nav-content{
+			margin-left:260px;padding-right:10px;
+		}
+		@media screen and (min-width: 100px) and (max-width: 1024px) {
+			.nav-content{
+				margin-left:0;padding-right:10px;
+			}
+		}
+		.swal2-popup {
+		  font-size: 1.4rem !important;
+		}
+		.row{margin: 0;}

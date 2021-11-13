@@ -1,0 +1,45 @@
+--TEST--
+"countBy" filter
+--TEMPLATE--
+{% for key, value in data|count_by(=> _.foo ) %}
+{{ key }}: {{ value }}
+{% endfor %}
+--DATA--
+return [ 'data' => [
+    [ 'foo' => 'foo' ],
+    [ 'foo' => 'foo' ],
+    [ 'foo' => 'foobar' ],
+    [ 'foo' => 'bar' ],
+    [ 'foo' => 'bar' ],
+    [ 'foo' => 'foo' ],
+] ];
+--EXPECT--
+foo: 3
+foobar: 1
+bar: 2
+--DATA--
+return [ 'data' => new ArrayIterator([
+    [ 'foo' => 'foo' ],
+    [ 'foo' => 'foo' ],
+    [ 'foo' => 'foobar' ],
+    [ 'foo' => 'bar' ],
+    [ 'foo' => 'bar' ],
+    [ 'foo' => 'foo' ],
+]) ];
+--EXPECT--
+foo: 3
+foobar: 1
+bar: 2
+--DATA--
+return [ 'data' => [
+    [ 'foo' => null, 'bar' => 1 ],
+    [ 'foo' => null, 'bar' => 2 ],
+    [ 'foo' => true ],
+    [ 'foo' => false ],
+    [ 'foo' => false ],
+    [ 'foo' => null, 'bar' => [] ],
+] ];
+--EXPECT--
+null: 3
+true: 1
+false: 2

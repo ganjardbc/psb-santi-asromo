@@ -1,0 +1,47 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<style type="text/css">
+	.table td, .table th {
+	    padding: .40rem;
+	    vertical-align: top;
+	    border: none !important;
+	}
+</style>
+<div class="containerjoy">
+	<div class="card" style="min-height:66vh">
+	  <div class="card-header">
+	    <b>BERIKUT PERSYARATAN PENDAFTARAN.</b>
+	  </div>
+	  <div class="card-body">
+	  	<table class="table">
+		  <tr>
+		    <td>1. </td>
+		    <td>Mempersiapkan File pas Foto untuk di upload/unggah di halaman formulir pendaftaran online. (Berhijab bagi perempuan).</td> 
+		  </tr>
+		  <tr>
+		    <td>2. </td>
+		    <td>Mempersiapkan <b>Nomor Induk Keluarga (NIK)</b> calon santri yang terdapat di Kartu Keluarga</td> 
+		  </tr>
+		  <tr>
+		    <td>3. </td>
+		    <td>Mempersiapkan <b>Nomor Induk Siswa Nasional (NISN)</b>. bisa lihat disini : <a href="http://nisn.data.kemdikbud.go.id/page/data" target="_blank">http://nisn.data.kemdikbud.go.id</a></td> 
+		  </tr>
+		  <tr>
+		    <td>4. </td>
+		    <td>Mempersiapkan biodata calon pendaftar beserta biodata orang tua calon pendaftar.</td> 
+		  </tr>
+		  <tr>
+		    <td>5. </td>
+		    <td>Mempersiapkan nomor handphone yang aktif untuk konfirmasi pendaftaran.</td> 
+		  </tr>
+		  <tr>
+		    <td>6. </td>
+		    <td>Mempersiapkan biaya pendaftaran sebesar <b>Rp. {{ biaya }} untuk tes di Pondok Mufidah Santi Asromo <i>(*Perlu diketahui, akan ada tambahan angka unik untuk total transfer biaya pendaftaran, misal Rp. 200.123. tambahan Rp. 123,- tsb disebut angka unik. pastikan anda mentransfer sesuai total transfer yang di informasikan pada saat selesai pengisian form pendaftaran).</i></b></td> 
+		  </tr>
+		</table>
+	    
+	  </div>
+	</div>
+</div>
+{% endblock content %}

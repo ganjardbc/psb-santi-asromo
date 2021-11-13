@@ -1,0 +1,103 @@
+<style type="text/css">
+    .form-control[readonly] {
+        background-color: white;
+        color: #565656;
+        cursor: pointer;
+    }
+</style>
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-notebook"></i> PSB CONFIG</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">PSB CONFIG</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+		  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="content" style="margin-top: 80px;"> 
+	<div class="hidden-lg hidden-md" style="padding:15px">
+  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+    </div>
+	<form class="container-fluid" ng-show="show_form" name="myForm">
+		<div class="card">
+			<div class="content" >
+          <div class="form-group row form-div-pendaftaran">
+              <label class="col-md-2 col-form-label form-label-pendaftaran">Gelombang Aktif :</label>
+              <div class="col-md-10">
+                  <div class="col-md-12">
+                      <select ng-model="config.status_gelombang" class="form-control" required>
+                          <option disabled selected hidden value="">---Pilih gelombang---</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group row form-div-pendaftaran">
+              <label class="col-md-2 col-form-label form-label-pendaftaran">Max No Bangku :</label>
+              <div class="col-md-10">
+                  <div class="col-md-12">
+                      <input class="form-control" min="10" placeholder="Nomor Bangku Ujian" ng-model="config.max_bangku" type="number" required>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group row form-div-pendaftaran">
+              <label class="col-md-2 col-form-label form-label-pendaftaran">Biaya Pendaftaran :</label>
+              <div class="col-md-10">
+                  <div class="col-md-12">
+                      <input class="form-control" min="10" placeholder="Nomor Bangku Ujian" ng-model="config.biaya_pendaftaran" type="number" required>
+                  </div>
+              </div>
+          </div>
+          <div class="row" style="padding:20px 34px 20px 20px;">
+              <div style="float:right">
+                  <button class="btn btn-danger btn-fill" ng-click="add()"><i class="fa fa-close"></i> Cancel</button>
+                  <button class="btn btn-primary btn-fill" ng-click="save_or_update()" ng-disabled="myForm.$invalid"><i class="fa fa-check"></i> {{btn_save_text}}</button>
+              </div>
+          </div>
+			</div>
+		</div>
+	</form>
+    <div class="container-fluid" ng-show="!show_form">
+    	<div class="card">
+            <div class="hidden-lg hidden-md"><br></div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <th width="50">#</th>
+                        <th>Gelombang Aktif</th>
+                        <th>Max No Bangku</th>
+                        <th>Biaya Pendaftaran</th>
+				                <th width="100">Action</th>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="data in datas_config">
+					                <td>{{$index+1}}</td>
+                          <td>Gelombang {{data.status_gelombang}}</td>
+                          <td>{{data.max_bangku}}</td>
+                          <td>Rp. {{toRp(data.biaya_pendaftaran)}}</td>
+					                <td>
+                            <button style="padding:1px 15px" class="btn btn-primary btn-sm btn-fill" ng-click="act_click(data)">Edit</button>
+					                 </td>
+					             </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

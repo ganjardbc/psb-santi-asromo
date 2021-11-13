@@ -1,0 +1,176 @@
+.spinner {
+      height: 40px;
+      font-size: 12px;
+    }
+
+    .spinner > div {
+      background-color: #333;
+      height: 100%;
+      width: 6px;
+      display: inline-block;
+      
+      -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+      animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    .spinner .rect4 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
+
+    @-webkit-keyframes sk-stretchdelay {
+      0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+      20% { -webkit-transform: scaleY(1.0) }
+    }
+
+    @keyframes sk-stretchdelay {
+      0%, 40%, 100% { 
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+      }  20% { 
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+      }
+    }
+    .form-div-pendaftaran{
+      padding:5px;
+    }
+    .form-label-pendaftaran{
+      text-align: right;
+    }
+    .btn-outline-light:hover {
+        color: #5b5b5b;
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+    }
+    .paddingItem{
+      padding: 10px;
+    }
+     .copyright { min-height:40px; background-color:#000000;}
+     .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
+     
+    
+      @media screen and (max-width:1000px)
+    {
+      #h1qu{display:none;}#slider .slide-caption {display:inline;}}
+    .navbartea{
+      background-color:#0ba600;
+      padding-left:100px;
+    }
+    .imageHeader{
+      padding:10px 100px 10px 100px;
+    }
+
+    .imageHeader2{
+      padding:10px 100px 10px 100px;
+    }
+    
+      .row{margin: 0;}
+      .angrytext {
+       font-size:22px;
+       text-align: center;
+       margin-bottom: 5px;
+       color:#4794D3;
+       -webkit-animation: change-color 3s ease 0s infinite normal ;
+       animation: change-color 3s ease 0s infinite normal ;
+    }
+
+    @-webkit-keyframes change-color {
+      0%{
+      color:#00502b;
+      }
+      100%{
+      color:#B71C1C;
+      }
+    }
+
+    @keyframes change-color {
+      0%{
+      color:#00502b;
+      }
+      100%{
+      color:#B71C1C;
+      }
+    }
+    .address{
+      font-size: 12px;
+      text-align: center;
+      color: #00502b;
+      font-weight: bold;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+    .containerjoy{
+      padding:10px 150px 10px 150px;
+    }
+
+    .padding-nav{
+      padding-top:5px;padding-bottom:5px;
+    }
+
+    .img-tea{
+      height: 80px;
+    }
+
+    .img-div{
+      display: flex;
+      align-items: center;
+    }
+
+    
+    @media screen and (min-width: 100px) and (max-width: 1024px) {
+      .img-tea{
+        height: 70px;
+      }
+      .img-div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .form-label-pendaftaran{
+        text-align: left;
+      }
+      .paddingItem{
+        padding:5px;
+      }
+      .containerjoy{
+        padding:10px;
+      }
+      .navbartea{
+        background-color:#0ba600;
+        padding-left:10px
+      }
+      .imageHeader{
+        padding:10px;
+        text-align: center;
+      }
+      .imageHeader2{
+        display: none;
+      }
+      .angrytext {
+         font-size:16px;
+         text-align: center;
+         margin-bottom: 5px;
+         color:#4794D3;
+         -webkit-animation: change-color 3s ease 0s infinite normal ;
+         animation: change-color 3s ease 0s infinite normal ;
+      }
+      .address{
+        display: none;
+      }
+      }

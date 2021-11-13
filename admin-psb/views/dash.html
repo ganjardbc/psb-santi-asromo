@@ -1,0 +1,74 @@
+<div class="wrapper">
+    <!-- <div class="sidebar" data-color="purple" data-image="img/sidebar-5.jpg"> -->
+    <div class="sidebar" data-color="green" data-image="{{rootBaseAdmin}}sidebar-5.jpg">
+        <div class="sidebar-background" style="background-image: url({{rootBaseAdmin}}sidebar-5.jpg)"></div>
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    PSB ONLINE<br>SANTI ASROMO
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li ng-class="{'active': isActive('/dash/verifikasi')}">
+                    <a ui-sref="dash.verifikasi">
+                        <i class="pe-7s-home"></i>
+                        <p>Verifikasi</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/datapendaftaran')}">
+                    <a ui-sref="dash.datapendaftaran">
+                        <i class="pe-7s-users"></i>
+                        <p>Data pendaftaran</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/seleksi')}">
+                    <a ui-sref="dash.seleksi">
+                        <i class="pe-7s-arc"></i>
+                        <p>Seleksi</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/hasil')}">
+                    <a ui-sref="dash.hasil">
+                        <i class="pe-7s-notebook"></i>
+                        <p>Hasil Seleksi</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/agenda')}">
+                    <a ui-sref="dash.agenda">
+                        <i class="pe-7s-date"></i>
+                        <p>Agenda</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/biaya')}">
+                    <a ui-sref="dash.biaya">
+                        <i class="pe-7s-cash"></i>
+                        <p>Biaya Pendidikan</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/session')}">
+                    <a ui-sref="dash.session">
+                        <i class="pe-7s-refresh-2"></i>
+                        <p>PSB Session</p>
+                    </a>
+                </li>
+                <li ng-class="{'active': isActive('/dash/setting')}">
+                    <a ui-sref="dash.setting">
+                        <i class="pe-7s-config"></i>
+                        <p>PSB Setting</p>
+                    </a>
+                </li>
+                <li>
+                    <a href ng-click="root_logout()">
+                        <i class="pe-7s-power"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div class="main-panel">
+        <ui-view></ui-view>
+    </div>
+</div>

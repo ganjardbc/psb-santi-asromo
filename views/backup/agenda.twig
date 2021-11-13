@@ -1,0 +1,111 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<style type="text/css">
+	.table .tbl {
+	    padding: .20rem;
+	    vertical-align: top;
+	    border: none !important;
+	}
+</style>
+<div class="containerjoy">
+	<div class="card">
+	  <div class="card-header">
+	    <b>AGENDA PSB / SCHEDULE PENERIMAAN SANTRI BARU <script>document.write(new Date().getFullYear())</script></b>
+	  </div>
+	  <div class="card-body">	    
+	     <table class="table table-bordered">
+	     	<thead>
+			    <tr>
+			      <th scope="col">Gelombang</th>
+			      <th scope="col">Periode Pendaftaran</th>
+			      <th scope="col">Seleksi & Wawancara</th>
+			      <th scope="col">Pengumuman Kelulusan</th>
+			      <th scope="col">Daftar Ulang</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for data in datas %}
+			  		<tr>
+				  	 	<td>
+				  	 		Gelombang {{romawi(data.gelombang)}} <br>
+				  	 		{{data.jenjang}}
+				  	 	</td>
+				  	 	<td>
+				  	 		{{data.tanggal_pendaftaran_from | strftime('%d %B')}} - {{data.tanggal_pendaftaran_to | strftime('%d %B %Y')}}
+				  	 	</td>
+				  	 	<td>
+				  	 		{{data.tanggal_ujian | strftime('%d %B %Y')}}
+				  	 	</td>
+				  	 	<td>
+				  	 		{{data.tanggal_pengumuman | strftime('%d %B %Y')}}
+				  	 	</td>
+				  	 	<td>
+				  	 		{{data.tanggal_daftar_ulang_from | strftime('%d %B')}} - {{data.tanggal_daftar_ulang_to | strftime('%d %B %Y')}}
+				  	 	</td>
+				  	</tr>
+			  	{% endfor %}
+			  	 
+			  	 
+			  </tbody>
+	     </table>
+	     <b>KETERANGAN</b> <br>
+	     <table class="table">
+		  	<tr class="tbl">
+		    	<td class="tbl" style="width:1px">1. </td>
+		    	<td class="tbl">Pengumuman kelulusan diumumkan melalui website <a target="_blank" href="https://santiasromo.or.id">www.santiasromo.or.id</a> atau <a target="_blank" href="https://psbonlinesantiasromo.or.id">psbonlinesantiasromo.or.id</a> dan papan pengumuman resmi Ponpes Santi Asromo.</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">2. </td>
+		    	<td class="tbl">Santri baru yang telah dinyatakan <b>LULUS</b> & telah <b>DAFTAR ULANG</b> diharuskan <b>SUDAH BERADA</b> di <b>SANTI ASROMO</b> pada <b>{{ibtida}}</b> untuk mengikuti <b>KHUTBATUL IBTIDA</b></td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">3. </td>
+		    	<td class="tbl">Pekan <i>Ta'aruf</i> Santi Asromo <b>(PENTAS</b> : {{pekan_taaruf}}).</td> 
+		  	</tr>
+		 </table>
+	     <b>KELENGKAPAN PENDAFTARAN</b><br>
+	     Calon santri mendaftarkan diri ke sekretariat pendaftaran atau dapat melakukan pendaftaran <i>online</i> dengan :<br>
+	     <table class="table">
+		  	<tr class="tbl">
+		    	<td class="tbl" style="width:1px">1. </td>
+		    	<td class="tbl">Mengisi formulir pendaftaran di <a target="_blank" href="https://psbonlinesantiasromo.or.id">psbonlinesantiasromo.or.id</a>.</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">2. </td>
+		    	<td class="tbl">Membayar biaya pendaftaran sebesar Rp. {{biaya_pendaftaran | number_format(0,',','.')}}.</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">3. </td>
+		    	<td class="tbl">Menyerahkan Pas foto 3 x 4 sebanyak 2 lembar.</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">4. </td>
+		    	<td class="tbl">Foto Copy Akta Kelahiran.</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">5. </td>
+		    	<td class="tbl">Foto Copy Kartu Keluarga.</td> 
+		  	</tr>
+		 </table>
+		 <b>MATERI SELEKSI TERDIRI DARI</b><br>
+	     <table class="table">
+		  	<tr class="tbl">
+		    	<td class="tbl" style="width:1px">1. </td>
+		    	<td class="tbl">Tes Potensi Akademik (TPA), (Matematika, Bahasa Indonesia, Bahasa Inggris, IPA, IPS).</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">2. </td>
+		    	<td class="tbl">Tes membaca dan menulis Al-Qur'an.</td> 
+		  	</tr>
+		  	<tr class="tbl">
+		    	<td class="tbl">3. </td>
+		    	<td class="tbl">Wawancara dengan orangtua calon santri.</td> 
+		  	</tr>
+		 </table>
+		 <b>SEKRETARIAT PENDAFTARAN DAN DAFTAR ULANG</b><br>
+	     Sekretariat PSB Pondok Mufidah Santi Asromo pada hari dan jam kerja (Pukul 07.00 - 14.00, Jum'at Libur)
+	  </div>
+	</div>
+</div>
+{% endblock content %}

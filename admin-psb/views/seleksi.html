@@ -1,0 +1,136 @@
+<style type="text/css">
+	.highlighted {
+	    background: yellow;
+	}
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-notebook"></i> SELEKSI</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">SELEKSI</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+		  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+		  		
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content" style="margin-top: 80px;"> 
+    <div class="modal fade" id="modal_seleksi" tabindex="-1" role="dialog" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="font-size:20px">Data Calon Santri</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+             <div style="text-align:center">
+                <img height="170" width="150" ng-src="{{url_pas_foto}}{{data.pas_foto}}" alt="{{data.nama}}">
+             </div>
+             <br>
+             <table class="table table-sm">
+              <tr>
+                <td width="130px">Nama lengkap</td>
+                <td style="width:2px">:</td>
+                <td>{{data.nama}}</td> 
+              </tr>
+              <tr>
+                <td>No. Peserta</td>
+                <td>:</td>
+                <td>{{data.no_kartu}}</td> 
+              </tr>
+              <tr>
+                <td>Dari Sekolah</td>
+                <td>:</td>
+                <td>{{data.nama_sekolah}}</td> 
+              </tr>
+              <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td>{{data.alamat}}, {{data.kelurahan}}, {{data.kecamatan}}, {{data.kabupaten}}, {{data.provinsi}}</td>
+              </tr>
+              <tr>
+                <td>NIK</td>
+                <td>:</td>
+                <td>{{data.nik}}</td> 
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>:</td>
+                <td ng-style='{"color":data.keterangan === "BELUM" ? "red" : "green"}'><b><i>{{data.keterangan}} SELEKSI</i></b></td> 
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="hidden-lg hidden-md" style="padding:15px">
+  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+    </div>	
+    <div class="container-fluid">
+    	<div class="card">
+        	<div class="header">
+                <div class="input-group">
+                    <input ng-model="search" ng-enter="act_search()" type="text" class="form-control" placeholder="Cari nama / nik / nisn / no hp." />
+                    <span class="input-group-btn">
+                        <button ng-click="act_search()" class="btn btn-warning btn-fill" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="hidden-lg hidden-md"><br></div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <th width="50">#</th>
+				        <th>No. Peserta</th>
+				        <th>Nama</th>
+				        <th>Jenis kelamin</th>
+				        <th>Asal Sekolah</th>
+				        <th>Status</th>
+				        <th width="140">Action</th>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="data in datas_seleksi">
+					      <td>{{$index+1}}</td>
+					      <td ng-bind-html="data.no_kartu | highlight:search"></td>
+					      <td ng-bind-html="data.nama | highlight:search"></td>
+					      <td ng-bind-html="data.jenis_kelamin | highlight:search"></td>
+					      <td ng-bind-html="data.asal_sekolah | highlight:search"></td>
+					      <td style="color:{{data.keterangan === 'LULUS'? 'green' : 'red'}}">{{data.keterangan}} SELEKSI</td>
+					      <td>
+					      	<button style="padding:1px 5px" class="btn btn-success btn-sm btn-fill" ng-click="klik(data)">Detail</button>
+					      	<button ng-show="data.keterangan==='BELUM'" style="padding:1px 5px" class="btn btn-primary btn-sm btn-fill" ng-click="act_luluskan(data)">Luluskan</button>
+                            <button ng-show="data.keterangan==='LULUS'" style="padding:1px 5px" class="btn btn-danger btn-sm btn-fill" ng-click="act_cancel(data)">Cancel</button>
+					      </td>
+					    </tr>
+                    </tbody>
+                </table>
+                <div style="text-align:center" ng-show="datas_pendaftaran.length >= 50">
+                	<button class="btn btn-primary" ng-click="load_more()"><i class="fa fa-refresh"></i> LOAD MORE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

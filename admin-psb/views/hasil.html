@@ -1,0 +1,88 @@
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-note2"></i> HASIL SELEKSI</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">HASIL SELEKSI</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <button ng-click="add()" ng-show="!show_form" class="btn btn-primary btn-sm btn-fill"><i class="fa fa-plus"></i> Add New</button>
+		  		<button ng-click="add()" ng-show="show_form" class="btn btn-danger btn-sm btn-fill"><i class="fa fa-close"></i> Close Form</button>
+		  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="content" style="margin-top: 80px;"> 
+	<div class="hidden-lg hidden-md" style="padding:15px">
+    	<button ng-click="add()" ng-show="!show_form" class="btn btn-primary btn-sm btn-fill"><i class="fa fa-plus"></i> Add New</button>
+  		<button ng-click="add()" ng-show="show_form" class="btn btn-danger btn-sm btn-fill"><i class="fa fa-close"></i> Close Form</button>
+  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+    </div>
+	<form class="container-fluid" ng-show="show_form" name="myForm">
+		<div class="card">
+			<div class="content" >
+				<div class="row">
+					<div class="col-md-6">
+		                <div class="form-group">
+		                    <label>Judul</label>
+		                    <input type="text" class="form-control" placeholder="Judul / nama file" ng-model="hasil.judul" required>
+		                </div>
+		            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>File</label>
+                            <div class="input-group">
+                                <input type="text" disabled="true" ng-model="file_source.name" class="form-control" placeholder="Upload dalam bentuk PDF">
+                                <span class="input-group-btn">
+                                    <label style="height: 40px;padding-top: 12px;" class="btn btn-secondary btn-fill">Browse
+                                        <input style="display:none" type="file" file-model="file_source" class="form-control">
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+		            <div class="col-md-3">
+		               <button class="btn btn-primary btn-fill" ng-click="save_or_update()" ng-disabled="myForm.$invalid"><i class="fa fa-check"></i> {{btn_save_text}}</button>
+		            </div>
+				</div>
+			</div>
+		</div>
+	</form>
+    <div class="container-fluid" ng-show="!show_form">
+    	<div class="card">
+        	<div class="hidden-lg hidden-md"><br></div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-sm">
+                    <thead>
+                        <th width="50">#</th>
+				        <th>Judul</th>
+				        <th width="100">Action</th>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="data in datas_hasil">
+					      <td>{{$index+1}}</td>
+					      <td>{{data.judul}}</td>
+					      <td>
+					      	<button style="padding:1px 3px" class="btn btn-info btn-sm btn-fill" ng-click="click(data)"><i class="fa fa-pencil" style="font-size:18px"></i></button>
+					      	<button style="padding:1px 3px" class="btn btn-danger btn-sm btn-fill" ng-click="remove(data)"><i class="fa fa-trash" style="font-size:18px"></i></button>
+					      </td>
+					    </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</div>

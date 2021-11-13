@@ -1,0 +1,361 @@
+<style type="text/css">
+	.highlighted {
+	    background: yellow;
+	}
+    
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-notebook"></i> DATA PENDAFTARAN FORM</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">DATA PENDAFTARAN FORM</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <a ui-sref="dash.datapendaftaran" class="btn btn-info btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-arrow-left"></i> Data Pendaftaran</a>
+		  		<!-- <button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content" style="margin-top: 80px;"> 
+	<div class="hidden-lg hidden-md" style="padding:15px">
+        <a ui-sref="dash.datapendaftaran" class="btn btn-info btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-arrow-left"></i> Data Pendaftaran</a>
+  		<!-- <button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button> -->
+    </div>	
+    <form class="container-fluid" name="myForm">
+        <div class="card">
+            <div class="content">
+                <div style="padding-left:25px;text-align:center">
+                    <img ng-src="{{foto_source != '' ? foto_source : url_pas_foto+data.pas_foto}}" height="150px" width="150px" alt=""><br>
+                    <label style="width:150px;border-radius: 0px;margin-bottom:0px" class="btn btn-info btn-xs btn-fill">Browse Foto
+                        <input style="width:150px;display:none" id="image" file-model="file_foto" accept=".jpg,.png" type="file" onchange="angular.element(this).scope().browse_foto(this.files)"/>
+                    </label><br>
+                    <span style="color:red;font-size:14px;text-align:center"><i>Limit size (500 KB)</i></span>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Lengkap :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nama" type="text" class="form-control" placeholder="Nama lengkap" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Jenjang :</label>
+                    <div class="col-md-10">
+                        <select ng-change="change_jenjang(data.jenjang)" ng-model="data.jenjang" class="form-control" required>
+                            <option disabled selected hidden value="">---Pilih jenjang pendidikan---</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kategori :</label>
+                    <div class="col-md-10">
+                        <select ng-change="change_kategori_pendaftaran(data.kategori_pendaftaran)" ng-model="data.kategori_pendaftaran" class="form-control" required>
+                            <option disabled selected hidden value="">---Pilih kategori---</option>
+                            <option value="SANTRI BARU">SANTRI BARU</option>
+                            <option value="SANTRI PINDAHAN">SANTRI PINDAHAN</option>
+                        </select>
+                    </div>
+                </div>
+                <div ng-show="data.kategori_pendaftaran === 'SANTRI PINDAHAN' && data.jenjang === 'SMP'" class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Pindahan Kelas :</label>
+                    <div class="col-md-10">
+                        <select ng-model="data.pindahan_kelas" class="form-control">
+                            <option disabled selected hidden value="">---Pilih pindahan kelas---</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                </div>
+                <div ng-show="data.kategori_pendaftaran === 'SANTRI PINDAHAN' && data.jenjang === 'SMA'" class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Pindahan Kelas :</label>
+                    <div class="col-md-10">
+                        <select ng-model="data.pindahan_kelas" class="form-control">
+                            <option disabled selected hidden value="">---Pilih pindahan kelas---</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">NIK :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nik" type="text" class="form-control" placeholder="NIK" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">NISN :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nisn" type="text" class="form-control" placeholder="NISN" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Asal Sekolah :</label>
+                    <div class="col-md-10">
+                        <select ng-model="data.asal_sekolah" class="form-control" required>
+                            <option disabled selected hidden value="">---Pilih asal sekolah---</option>
+                            <option ng-show="data.jenjang === 'SMP'" value="SD NEGERI">SD NEGERI</option>
+                            <option ng-show="data.jenjang === 'SMP'" value="SD SWASTA">SD SWASTA</option>
+                            <option ng-show="data.jenjang === 'SMP'" value="MI NEGERI">MI NEGERI</option>
+                            <option ng-show="data.jenjang === 'SMP'" value="MI SWASTA">MI SWASTA</option>
+                            <option ng-show="data.jenjang === 'SMP'" value="PERSAMAAN SD">PERSAMAAN SD</option>
+
+                            <option ng-show="data.jenjang === 'SMA'" value="SMP NEGERI">SMP NEGERI</option>
+                            <option ng-show="data.jenjang === 'SMA'" value="SMP SWASTA">SMP SWASTA</option>
+                            <option ng-show="data.jenjang === 'SMA'" value="MTS NEGERI">MTS NEGERI</option>
+                            <option ng-show="data.jenjang === 'SMA'" value="MTS SWASTA">MTS SWASTA</option>
+                            <option ng-show="data.jenjang === 'SMA'" value="PERSAMAAN SLTP">PERSAMAAN SLTP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Sekolah :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nama_sekolah" type="text" class="form-control" placeholder="Nama sekolah" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Panggilan :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nama_panggilan" type="text" class="form-control" placeholder="Nama panggilan" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Jenis kelamin :</label>
+                    <div class="col-md-10">
+                        <select ng-model="data.jenis_kelamin" class="form-control" required>
+                            <option disabled selected hidden value="">---Pilih jenis kelamin---</option>
+                            <option value="LAKI - LAKI">LAKI - LAKI</option>
+                            <option value="PEREMPUAN">PEREMPUAN</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Tempat lahir :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.tempat_lahir" type="text" class="form-control" placeholder="Tempat lahir" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Tanggal lahir :</label>
+                    <div class="col-md-10">
+                        <input class="form-control"
+                            start-date="startViewTanggalLahir"
+                           ng-model="tanggal_lahir"
+                           ng-model-options="{ updateOn: 'blur' }"
+                           placeholder="Tanggal lahir"
+                           format="DD/MM/YYYY"
+                           start-view="decade"
+                           moment-picker="tanggal_lahir" name="tanggal_lahir" required>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Alamat :</label>
+                    <div class="col-md-10">
+                        <textarea ng-model="data.alamat" class="form-control" placeholder="Alamat " required></textarea>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Provinsi :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.provinsi" type="text" class="form-control" placeholder="Provinsi" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kabupaten :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kabupaten" type="text" class="form-control" placeholder="Kabupaten" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kecamatan :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kecamatan" type="text" class="form-control" placeholder="Kecamatan" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kelurahan :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kelurahan" type="text" class="form-control" placeholder="Kelurahan" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kode POS :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kode_pos" type="text" class="form-control" placeholder="Kode POS" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Ibu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nama_ibu" type="text" class="form-control" placeholder="Nama Ibu" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Ayah :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nama_ayah" type="text" class="form-control" placeholder="Nama Ayah" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Wali :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.nama_wali" type="text" class="form-control" placeholder="Nama Ayah" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Pendidikan Ibu :</label>
+                    <div class="col-md-10">
+                        <select ng-model="data.pendidikan_ibu" class="form-control" required>
+                            <option disabled selected hidden value="">---Pilih pendidikan---</option>
+                            <option value="SD">SD</option>
+                            <option value="MTS">MTS</option>
+                            <option value="SMP">SMP</option>
+                            <option value="MA">MA</option>
+                            <option value="SMA">SMA</option>
+                            <option value="D1">D1</option>
+                            <option value="D2">D2</option>
+                            <option value="D3">D3</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S2</option>
+                            <option value="PROF">PROF</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Pendidikan Ayah :</label>
+                    <div class="col-md-10">
+                        <select ng-model="data.pendidikan_ayah" class="form-control" required>
+                            <option disabled selected hidden value="">---Pilih pendidikan---</option>
+                            <option value="SD">SD</option>
+                            <option value="MTS">MTS</option>
+                            <option value="SMP">SMP</option>
+                            <option value="MA">MA</option>
+                            <option value="SMA">SMA</option>
+                            <option value="D1">D1</option>
+                            <option value="D2">D2</option>
+                            <option value="D3">D3</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S2</option>
+                            <option value="PROF">PROF</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Pekerjaan Ibu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.pekerjaan_ibu" type="text" class="form-control" placeholder="Pekerjaan Ibu" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Pekerjaan Ayah :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.pekerjaan_ayah" type="text" class="form-control" placeholder="Pekerjaan Ayah" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Alamat Ortu :</label>
+                    <div class="col-md-10">
+                        <textarea ng-model="data.alamat_ortu" class="form-control" placeholder="Alamat Ortu" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Provinsi Ortu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.provinsi_ortu" type="text" class="form-control" placeholder="Provinsi Ortu" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kabupaten Ortu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kabupaten_ortu" type="text" class="form-control" placeholder="Kabupaten Ortu" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kecamatan Ortu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kecamatan_ortu" type="text" class="form-control" placeholder="Kecamatan Ortu" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Kelurahan Ortu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.kelurahan_ortu" type="text" class="form-control" placeholder="Kelurahan Ortu" required/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">No Hp Ortu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.no_hp" type="text" class="form-control" placeholder="No Hp" required/>
+                    </div>
+                </div>    
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Nominal Trf :</label>
+                    <div class="col-md-10">
+                        <input value="Rp. {{toRp(data.nominal_transfer)}}" type="text" class="form-control" placeholder="Nominal Transfer" readonly required/>
+                    </div>
+                </div> 
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Status :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.status" type="text" class="form-control" placeholder="Status" readonly required/>
+                    </div>
+                </div>                   
+            </div>
+        </div>
+        <div ng-show="data.no_kartu != null" class="card">
+            <div class="content">
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">No.Kartu :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.no_kartu" type="text" class="form-control" placeholder="No Kartu"/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">No.Ruangan :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.no_ruangan" type="text" class="form-control" placeholder="No Ruangan"/>
+                    </div>
+                </div> 
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">No.Bangku :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.no_bangku" type="text" class="form-control" placeholder="No Bangku"/>
+                    </div>
+                </div>  
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Gelombang :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.gelombang" type="text" class="form-control" placeholder="Gelombang"/>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Tanggal Ujian :</label>
+                    <div class="col-md-10">
+                        <input ng-model="data.tanggal" type="text" class="form-control" placeholder="Gelombang"/>
+                    </div>
+                </div>   
+            </div>
+        </div>
+        <div class="row" style="padding:20px">
+            <button style="float:right" class="btn btn-primary btn-fill" ng-click="submit()" ng-disabled="myForm.$invalid"><i class="fa fa-check"></i> {{btn_save_text}}</button>
+        </div>
+    </form>
+</div>

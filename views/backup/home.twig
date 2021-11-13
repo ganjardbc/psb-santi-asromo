@@ -1,0 +1,104 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div class="containerjoy">
+	<div class="row">
+		<div class="col-md-12 paddingItem">
+			<div class="card">
+			  <div class="card-header">
+			    <b>SELAMAT DATANG CALON SANTRI BARU PONDOK MUFIDAH SANTI ASROMO <i>(Islamic Boarding School)</i></b>
+			  </div>
+			  
+			</div>
+		</div>
+		{#awal informasi#}
+		<div class="col-md-12 paddingItem">
+			<div class="card text-white bg-primary mb-3">
+              <div class="card-header">INFORMASI !</div>
+              <div class="card-body">
+                <h5 class="card-title">
+                    Penerimaan Santri Baru (PSB) Ponpes Santi Asromo
+                </h5>
+                <p class="card-text">
+                    Dengan ini panitia penerimaan santri baru (PSB) Ponpes Mufidah Santi Asromo menginformasikan bahwasanya seleksi PSB Santi Asromo 2021 dilaksanakan pada tanggal <b>25 April 2021 (SMP SMA) dan 13 Juni 2021 (SMA)</b> dengan teknis pelaksanaan sebagai berikut : 
+                    <ul>
+                      <li>
+                          Test potensi akademik dilaksanakan secara online dengan tautan (link) yang akan diinformasikan via WhatsApp ke nomor santri atau orangtua sehari sebelum pelaksanaan test.
+                      </li>
+                      <li>
+                          Test baca Qur'an menggunakan Video Call Via WhatsApp.
+                      </li>
+                      <li>
+                          Informasi Selanjutnya Bisa hubungi 0813-2301-4481
+                      </li>
+                    </ul>
+                </p>
+              </div>
+            </div>
+		</div>
+		{#akhir informasi#}
+	</div>
+	<div class="row">
+		<div class="col-md-4 paddingItem">
+			<div class="card">
+			  <img class="card-img-top" src="img/persyaratan.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title">Persyaratan Pendaftaran</h4>
+			    <p class="card-text">Sebelum mendaftar, lihat terlebih dahulu persyaratan pendaftaran yang terlampir.</p>
+			    <a href="{{base_url()}}/persyaratan" class="btn btn-danger">Lihat Persyaratan Pendaftaran</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4 paddingItem">
+			<div class="card">
+			  <img class="card-img-top" src="img/panduan2.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title">Panduan Pendaftaran</h4>
+			    <p class="card-text">Selanjutnya, lihat panduan dan alur pendaftaran online Pondok Mufidah Santi Asromo.</p>
+			    <a href="{{base_url()}}/panduan" class="btn" style="background-color:#e0a61f;color:white">Lihat Panduan Pendaftaran</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4 paddingItem">
+			<div class="card">
+			  <img class="card-img-top" src="img/reg.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title">Pendaftaran</h4>
+			    <p class="card-text">Jika sudah membaca persyaratan dan panduan pendaftarannya, silahkan melakukan pendaftaran.</p>
+			    <a href="{{base_url()}}/pendaftaran" class="btn btn-primary">Mulai Pendaftaran</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4 paddingItem">
+			<div class="card">
+			  <img class="card-img-top" src="img/pendaftar.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title">List Pendaftar</h4>
+			    <p class="card-text">Melihat siapa saja yang sudah mendaftar online di Pondok Mufidah Santi Asromo.</p>
+			    <a href="{{base_url()}}/list-pendaftar" class="btn btn-primary" class="btn" style="background-color:#3F51B5;color:white">Lihat Pendaftar</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4 paddingItem">
+			<div class="card">
+			  <img class="card-img-top" src="img/print.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title">Cetak Kartu</h4>
+			    <p class="card-text">Mencetak sebuah kartu untuk melakukan TES di lokasi Pondok Mufidah Santi Asromo.</p>
+			    <a href="{{base_url()}}/cetak-kartu" class="btn" style="background-color:#7ba3a8;color:white">Mencetak Kartu</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-4 paddingItem">
+			<div class="card">
+			  <img class="card-img-top" src="img/pengumuman.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h4 class="card-title">Hasil Seleksi</h4>
+			    <p class="card-text">Mendapatkan informasi dan melihat pengumuman hasil seleksi ujian di Pondok Mufidah Santi Asromo.</p>
+			    <a ng-click="scroll()" href="{{base_url()}}/hasil-seleksi" class="btn btn-success">Lihat Pengumuman Hasil Seleksi</a>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

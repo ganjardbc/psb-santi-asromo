@@ -1,0 +1,83 @@
+<style type="text/css">
+	.highlighted {
+	    background: yellow;
+	}
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-notebook"></i> DATA PENDAFTARAN</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">DATA PENDAFTARAN</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+		  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+		  		<button class="btn btn-primary btn-sm btn-fill" ng-click="export_to_excel()"><i class="fa fa-file-excel-o"></i> Export</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content" style="margin-top: 80px;"> 
+	<div class="hidden-lg hidden-md" style="padding:15px">
+  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+  		<button class="btn btn-primary btn-sm btn-fill" ng-click="export_to_excel()"><i class="fa fa-file-excel-o"></i> Export</button>
+    </div>	
+    <div class="container-fluid">
+    	<div class="card">
+        	<div class="header">
+                <div class="input-group">
+                    <input ng-model="search" ng-enter="act_search()" type="text" class="form-control" placeholder="Cari nama / nik / nisn / no hp." />
+                    <span class="input-group-btn">
+                        <button ng-click="act_search()" class="btn btn-warning btn-fill" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="hidden-lg hidden-md"><br></div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <th width="50">#</th>
+				        <th>Nama</th>
+				        <th>Jenis kelamin</th>
+				        <th>Jenjang</th>
+				        <th>No. HP</th>
+				        <th>Status</th>
+				        <th width="110">Action</th>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="data in datas_pendaftaran">
+					      <td>{{$index+1}}</td>
+					      <td ng-bind-html="data.nama | highlight:search"></td>
+					      <td ng-bind-html="data.jenis_kelamin | highlight:search"></td>
+					      <td ng-bind-html="data.jenjang | highlight:search"></td>
+					      <td ng-bind-html="data.no_hp | highlight:search"></td>
+					      <td style="color:{{data.status === 'VERIFIED'? 'green' : 'red'}}" ng-bind-html="data.status | highlight:search"></td>
+					      <td>
+					      	<button style="padding:1px 5px" class="btn btn-success btn-sm btn-fill" ng-click="klik(data)">Edit</button>
+					      	<button style="padding:1px 5px" class="btn btn-danger btn-sm btn-fill" ng-click="act_remove(data)">Hapus</button>
+					      </td>
+					    </tr>
+                    </tbody>
+                </table>
+                <div style="text-align:center" ng-show="datas_pendaftaran.length >= 50">
+                	<button class="btn btn-primary" ng-click="load_more()"><i class="fa fa-refresh"></i> LOAD MORE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-notebook"></i> BIAYA PENDIDIKAN</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">BIAYA PENDIDIKAN</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <button ng-click="add()" ng-show="!show_form" class="btn btn-primary btn-sm btn-fill"><i class="fa fa-plus"></i> Add New</button>
+		  		<button ng-click="add()" ng-show="show_form" class="btn btn-danger btn-sm btn-fill"><i class="fa fa-close"></i> Close Form</button>
+		  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="content" style="margin-top: 80px;"> 
+	<div class="hidden-lg hidden-md" style="padding:15px">
+    	<button ng-click="add()" ng-show="!show_form" class="btn btn-primary btn-sm btn-fill"><i class="fa fa-plus"></i> Add New</button>
+  		<button ng-click="add()" ng-show="show_form" class="btn btn-danger btn-sm btn-fill"><i class="fa fa-close"></i> Close Form</button>
+  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+    </div>
+	<form class="container-fluid" ng-show="show_form" name="myForm">
+		<div class="card">
+			<div class="content" >
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Uraian Biaya :</label>
+                    <div class="col-md-10">
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Nama biaya / uraian biaya" ng-model="biaya.nama_biaya" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Harga SMP :</label>
+                    <div class="col-md-10">
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Harga SMP" ng-model="biaya.harga_smp" type="number" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row form-div-pendaftaran">
+                    <label class="col-md-2 col-form-label form-label-pendaftaran">Harga SMA :</label>
+                    <div class="col-md-10">
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Harga SMA" ng-model="biaya.harga_sma" type="number" required>
+                        </div>
+                    </div>
+                </div>
+				<div class="row" style="padding:20px 34px 20px 20px;">
+                    <div style="float:right">
+                        <button class="btn btn-primary btn-fill" ng-click="save_or_update()" ng-disabled="myForm.$invalid"><i class="fa fa-check"></i> {{btn_save_text}}</button>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</form>
+    <div class="container-fluid" ng-show="!show_form">
+    	<div class="card">
+        	
+            <div class="hidden-lg hidden-md"><br></div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-sm table-hover table-bordered">
+                    <thead>
+                        <th width="50">#</th>
+                        <th>Uraian Biaya</th>
+                        <th>Harga SMP</th>
+				        <th>Harga SMA</th>
+				        <th width="110">Action</th>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="data in datas_biaya">
+					      <td>{{$index+1}}</td>
+                          <td>{{data.nama_biaya}}</td>
+                          <td width="120">Rp. <span style="float:right;margin-right:5px">{{toRp(data.harga_smp)}}</span></td>
+                          <td width="120">Rp. <span style="float:right;margin-right:5px">{{toRp(data.harga_sma)}}</span></td>
+					      <td>
+					      	<button style="padding:1px 5px" class="btn btn-info btn-sm btn-fill" ng-click="act_click(data)">Edit</button>
+					      	<button style="padding:1px 5px" class="btn btn-danger btn-sm btn-fill" ng-click="act_remove(data)">Delete</button>
+					      </td>
+					    </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align:right"><b>Jumlah = </b></td>
+                            <td width="120"><b>Rp. <span style="float:right;margin-right:5px">{{toRp(getTotal('harga_smp'))}}</span></b></td>
+                            <td width="120"><b>Rp. <span style="float:right;margin-right:5px">{{toRp(getTotal('harga_sma'))}}</span></b></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

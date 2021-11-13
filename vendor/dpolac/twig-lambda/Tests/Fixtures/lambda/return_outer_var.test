@@ -1,0 +1,13 @@
+--TEST--
+lambda expression works when returning outer variable
+--TEMPLATE--
+{% set b = 'WORKS' -%}
+{{ call(=> a) }}
+{{ call(=> b) }}
+{{ call(a => a~b, ['STILL ']) }}
+--DATA--
+return [ 'a' => 'WORKS' ];
+--EXPECT--
+WORKS
+WORKS
+STILL WORKS

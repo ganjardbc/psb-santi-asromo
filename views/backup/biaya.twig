@@ -1,0 +1,68 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<style type="text/css">
+	.table .tbl {
+	    padding: .20rem;
+	    vertical-align: top;
+	    border: none !important;
+	}
+</style>
+<div class="containerjoy">
+	<div class="card">
+	  <div class="card-header">
+	    <b>BIAYA PENDIDIKAN</b>
+	  </div>
+	  <div class="card-body">	    
+	     <table class="table table-bordered table-sm">
+	     	<thead>
+			    <tr>
+			      <th scope="col" style="width:40px">No</th>
+			      <th scope="col">Uraian</th>
+			      <th scope="col" style="width:150px">Biaya SMP</th>
+			      <th scope="col" style="width:150px">Biaya SMA</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	{% for data in datas %}
+			  		<tr>
+				  	 	<td>
+				  	 		{{loop.index}}
+				  	 	</td>
+				  	 	<td>
+				  	 		{{data.nama_biaya}}
+				  	 	</td>
+				  	 	<td>
+				  	 		Rp. <span style="float:right">{{data.harga_smp | number_format(0,',','.')}}</span>
+				  	 	</td>
+				  	 	<td>
+				  	 		Rp. <span style="float:right">{{data.harga_sma | number_format(0,',','.')}}</span>
+				  	 	</td>
+				  	</tr>
+			  	{% endfor %}
+			  	<tr>
+			  	 	<td>
+			  	 		<b>#</b>
+			  	 	</td>
+			  	 	<td>
+			  	 		<b>JUMLAH</b>
+			  	 	</td>
+			  	 	<td>
+			  	 		<b>Rp. <span style="float:right">{{total_harga.total_harga_smp | number_format(0,',','.')}}</span></b>
+			  	 	</td>
+			  	 	<td>
+			  	 		<b>Rp. <span style="float:right">{{total_harga.total_harga_sma | number_format(0,',','.')}}</span></b>
+			  	 	</td>
+			  	 </tr>			  	 
+			  </tbody>
+	     </table>
+	     <b>KETERANGAN</b><br>
+	     Pembayaran perbulan/SPP untuk bulan-bulan selanjutnya :<br>
+	     - SMP = Rp. {{ket.biaya_spp_smp | number_format(0,',','.')}}<br>
+	     - SMA = Rp. {{ket.biaya_spp_sma | number_format(0,',','.')}}<br>
+	     - <i>Loundry</i> (tidak diwajibkan) = Rp. {{ket.biaya_laundry | number_format(0,',','.')}}
+	     
+	  </div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,77 @@
+<style type="text/css">
+  .panel-heading {
+      padding: 5px 15px;
+  }
+
+  .panel-footer {
+    padding: 1px 15px;
+    color: #A0A0A0;
+  }
+
+  .profile-img {
+    width: 40%;
+    margin: 0 auto 10px;
+    display: block;
+  }
+  .container-outer {
+     display: flex;
+     justify-content: center; /* for horizontal alignment */
+     align-items: center;     /* for vertical alignment   */
+     padding-top: 70px;
+  }
+
+  .container-inner {
+     width: 30%;
+     
+  }
+
+  @media screen and (min-width: 100px) and (max-width: 1024px) {
+      .container-inner {
+         width: 80%;
+      }
+  }
+</style>
+<div class="container-outer">
+    <form name="myForm" class="container-inner">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="text-align:center">
+            <strong>USER LOGIN PSB SANTI ASROMO</strong>
+          </div>
+          <div class="panel-body">
+            <div>
+              <fieldset>
+                <div class="row">
+                  <div class="center-block">
+                    <img class="profile-img" src="../img/logo2.png" alt="">
+                  </div>
+                  <br>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label>Username</label>
+                          <input type="text" ng-model="data.username" class="form-control" placeholder="Enter Username..." required>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label>Password</label>
+                          <input type="password" ng-model="data.password" class="form-control" placeholder="Enter Password..." required>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="submit" ng-click="login()" class="btn btn-lg btn-success btn-fill btn-block" value="Sign in">
+                      </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="panel-footer" style="text-align:center">
+            ISLAMIC BOARDING SCHOOL
+          </div>
+      </div>
+
+    </form>    
+</div>

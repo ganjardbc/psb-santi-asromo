@@ -1,0 +1,160 @@
+<style type="text/css">
+	.highlighted {
+	    background: yellow;
+	}
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top nav-content">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="margin-top:9px"><i class="pe-7s-notebook"></i> VERIFIKASI CALON SANTRI</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    <p class="hidden-lg hidden-md">VERIFIKASI CALON SANTRI</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+		  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content" style="margin-top: 80px;"> 
+	<div class="modal fade" id="modal_verifikasi" tabindex="-1" role="dialog" >
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" style="font-size:20px">Data Calon Santri</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	         <div style="text-align:center">
+	      	 	<img height="170" width="150" ng-src="{{url_pas_foto}}{{data.pas_foto}}" alt="{{data.nama}}">
+	      	 </div>
+	      	 <br>
+	      	 <table class="table table-sm">
+			  <tr>
+			    <td width="130px">Nama lengkap</td>
+			    <td style="width:2px">:</td>
+			    <td>{{data.nama}}</td> 
+			  </tr>
+			  <tr>
+			    <td>NIK</td>
+			    <td>:</td>
+			    <td>{{data.nik}}</td> 
+			  </tr>
+			  <tr>
+			    <td>NISN</td>
+			    <td>:</td>
+			    <td>{{data.nisn}}</td> 
+			  </tr>
+			  <tr>
+			    <td>No. Hp ortu</td>
+			    <td>:</td>
+			    <td>{{data.no_hp}}</td> 
+			  </tr>
+			  <tr>
+			    <td>Nominal Transfer</td>
+			    <td>:</td>
+			    <td>Rp. {{toRp(data.nominal_transfer)}}</td> 
+			  </tr>
+			  <tr ng-show="data_kartu.no_kartu">
+				    <td>No. Peserta</td>
+				    <td>:</td>
+				    <td>{{data_kartu.no_kartu}}</td> 
+			  </tr>
+			  <tr ng-show="data_kartu.no_kartu">
+				    <td>No. Ruangan</td>
+				    <td>:</td>
+				    <td>{{data_kartu.no_ruangan}}</td> 
+			   </tr>
+			   <tr ng-show="data_kartu.no_kartu">
+				    <td>No. Bangku</td>
+				    <td>:</td>
+				    <td>{{data_kartu.no_bangku}}</td> 
+			  </tr>
+			  <tr>
+			    <td>Status</td>
+			    <td>:</td>
+			    <td ng-style='{"color":data.status === "UNVERIFIED" ? "red" : "green"}'><b><i>{{data.status}}</i></b></td> 
+			  </tr>
+			</table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="hidden-lg hidden-md" style="padding:15px">
+  		<button class="btn btn-success btn-sm btn-fill" ng-click="refresh()"><i class="fa fa-refresh"></i> Refresh</button>
+    </div>
+
+	
+    <div class="container-fluid">
+    	<div ng-show="kuota.status === 'lebih'" class="alert alert-danger alert-dismissible fade in">
+    		<a href="#" class="close" data-dismiss="alert" aria-label="close" style="right: -6px;color: black;">&times;</a>
+	  		<strong>Peringatan!</strong> Kuota pendaftaran sudah habis. pendaftar sudah ada {{kuota.pendaftar}}, batas kuota yang ditentukan adalah {{kuota.batas_kuota}}
+		</div>
+		<div ng-show="kuota.status === 'kurang'" class="alert alert-info alert-dismissible fade in">
+    		<a href="#" class="close" data-dismiss="alert" aria-label="close" style="right: -6px;color: black;">&times;</a>
+	  		<strong>Information!</strong> Jumlah pendaftar {{kuota.pendaftar}} | Batas kuota {{kuota.batas_kuota}} | Sisa kuota {{kuota.sisa_kuota}}
+		</div>
+    	<div class="card">
+        	<div class="header">
+                <div class="input-group">
+                    <input ng-model="search" ng-enter="act_search()" type="text" class="form-control" placeholder="Cari nama / nik / nisn / no hp / nominal transfer." />
+                    <span class="input-group-btn">
+                        <button ng-click="act_search()" class="btn btn-warning btn-fill" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="hidden-lg hidden-md"><br></div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <th width="50">#</th>
+				        <th>Nama</th>
+				        <th>No.hp</th>
+				        <th>NIK</th>
+				        <th>Transfer</th>
+				        <th>Status</th>
+				        <th width="130">Action</th>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="data in datas_verifikasi">
+					      <td>{{$index+1}}</td>
+					      <td ng-bind-html="data.nama | highlight:search"></td>
+					      <td ng-bind-html="data.no_hp | highlight:search"></td>
+					      <td ng-bind-html="data.nik | highlight:search"></td>
+					      <td style="color:blue">Rp. {{toRp(data.nominal_transfer)}}</td>
+					      <td style="color:{{data.status === 'VERIFIED'? 'green' : 'red'}}" ng-bind-html="data.status | highlight:search"></td>
+					      <td>
+					      	<button style="padding:1px 3px" class="btn btn-success btn-sm btn-fill" ng-click="klik(data)">Detail</button>
+					      	<button ng-show="data.status==='VERIFIED'" style="padding:1px 3px" class="btn btn-danger btn-sm btn-fill" ng-click="act_batal_verifikasi(data)">Cancel</button>
+					      	<button ng-show="data.status==='UNVERIFIED'" style="padding:1px 3px" class="btn btn-primary btn-sm btn-fill" ng-click="act_verifikasi(data)">Verifikasi</button>
+					      </td>
+					    </tr>
+                    </tbody>
+                </table>
+                <div style="text-align:center" ng-show="datas_verifikasi.length >= 50">
+                	<button class="btn btn-primary" ng-click="load_more()"><i class="fa fa-refresh"></i> LOAD MORE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Pendaftaran santri asromo online">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/css/font-awesome.min.css">
+  <link rel='stylesheet' type='text/css' href='{{base_url()}}/assets/css/style.css'/>
+  <style type="text/css">
+      body{background: url('{{base_url()}}/img/bg.png');}
+  </style>
+</head>
+<body>
+  <script src="{{base_url()}}/assets/js/jquery.min.js"></script>
+  <script src="{{base_url()}}/assets/js/proper.min.js"></script>
+  <script src="{{base_url()}}/assets/js/bootstrap.min.js"></script>
+  <script src="{{base_url()}}/assets/js/moment.min.js"></script>
+  <script src="{{base_url()}}/assets/js/sweetalert.js"></script>
+  <div>
+    <div class="row">
+      <div class="img-div col-md-3">
+        <div class="imageHeader">
+          <img class="img-tea" src="{{base_url()}}/img/logo2.png">
+        </div>
+      </div>
+      <div style="align-self:center" class="col-md-6">
+        <p class="address">YAYASAN KH. ABDUL HALIM</p>
+        <h3 class="angrytext">PENDAFTARAN SANTRI BARU<br>PONDOK MUFIDAH SANTI ASROMO</h3>
+        <p class="address">Santi Asromo – Desa Pasirayu – Kec. Sindang – Kab. Majalengka</p>
+      </div>
+      <div class="col-md-3">
+        <div class="imageHeader2">
+          <img src="{{base_url()}}/img/logo3.png">
+        </div>
+      </div>
+    </div>
+    
+    <nav style="padding-top: 2px;padding-bottom: 2px;" class="navbar navbar-expand-lg navbar-dark navbartea">
+      <a class="navbar-brand" href="{{base_url()}}"><b>PSB ONLINE SANTI ASROMO</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {{active == 'home' ? 'active' : ''}}">
+            <a class="nav-link" href="{{base_url()}}"><b>HOME</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{active == 'selayang' ? 'active' : ''}}" href="{{base_url()}}/selayang-pandang"><b>SELAYANG PANDANG</b></a>
+          </li>
+          <li class="nav-item {{active == 'agenda' ? 'active' : ''}}">
+            <a class="nav-link" href="{{base_url()}}/agenda-psb"><b>AGENDA PSB</b></a>
+          </li>
+          <li class="nav-item {{active == 'biaya' ? 'active' : ''}}">
+            <a class="nav-link" href="{{base_url()}}/biaya-pendidikan"><b>BIAYA PENDIDIKAN</b></a>
+          </li>
+          
+          <li class="nav-item dropdown {{active == 'pendaftaran' ? 'active' : ''}}">
+            <a class="nav-link dropdown-toggle" href id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <b>PENDAFTARAN ONLINE</b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{base_url()}}/persyaratan">Persyaratan Pendaftaran</a>
+              <a class="dropdown-item" href="{{base_url()}}/panduan">Panduan Pendaftaran</a>
+              <a class="dropdown-item" href="{{base_url()}}/pendaftaran">Mulai Pendaftaran</a>
+              <a class="dropdown-item" href="{{base_url()}}/list-pendaftar">Lihat Pendaftar</a>
+              <a class="dropdown-item" href="{{base_url()}}/cetak-kartu">Cetak Kartu</a>
+              <a class="dropdown-item" href="{{base_url()}}/hasil-seleksi">Lihat Hasil Seleksi</a>
+              
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://santiasromo.or.id" target="_blank"><b>INFO LANJUT</b></a>
+          </li>
+        </ul>
+      </div>
+    </nav>  
+    {% block content %} {% endblock %}  
+    <div class="copyright">
+      <div class="container">
+        <div class="col-md-12">
+          <p style="padding-bottom:0">Jika mendapat kesulitan dalam pendaftaran silahkan hubungi 0853-2134-3674 (Ust Ahmad Ubaidillah) atau 0898-8749-215 (Ustadzah Desi Susilawati).</p>
+          <p style="padding-top:0">© 2021 - All Rights Pondok Mufidah Santi Asromo Islamic Boarding School</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

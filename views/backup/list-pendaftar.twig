@@ -1,0 +1,60 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div class="containerjoy" style="min-height:65vh">
+	<div class="card">
+	  <div class="card-header">
+	    <b>BERIKUT CALON SANTRI YANG SUDAH MENDAFTAR DI SANTI ASROMO.</b>
+	  </div>
+	  <div class="card-body">
+  	  	<form class="input-group mb-3" method="GET" action="{{base_url()}}/list-pendaftar-s">
+            <input name="q" type="text" class="form-control" placeholder="Cari berdasarkan nama / nik / nisn" value="{{value}}">
+		  	<div class="input-group-append">
+			    <button class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
+			</div>
+    	</form>
+	  	<table class="table table-bordered table-sm table-hover">
+		    <thead>
+		      <tr>
+		        <th>#</th>
+		        <th>Nama</th>
+		        <th>Jenis Kelamin</th>
+		        <th>Jenjang</th>
+		        <th>NIK</th>
+		        <th>Status</th>
+		        <th>Action</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      {% for data in datas %}
+		      	<tr>
+		      		<td width="50">{{loop.index+skip}}</td>
+			        <td>{{data.nama}}</td>
+			        <td>{{data.jenis_kelamin}}</td>
+			        <td>{{data.jenjang}}</td>
+			        <td>{{data.nik}}</td>
+			        <td>{{data.status}}</td>
+			        <td style="padding:0px 5px">
+			        	<a href="{{base_url()}}/list-pendaftar-detail/{{data.id}}" class="btn btn-success btn-sm" style="padding:0px 10px;width:100%">Detail</a>
+			        </td>
+			    </tr>
+		      {% endfor %}
+		    </tbody>
+		</table>
+		{% if needed %}
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+			  	{% for i in 1..lastpage %}
+	              	{% if i == page %}
+	              		<li class="page-item active"><a class="page-link" href>{{i}}</a></li>
+	              	{% else %}
+	              		<li class="page-item"><a class="page-link" href="{{base_url()}}/list-pendaftar?page={{i}}">{{i}}</a></li>
+	              	{% endif %}
+	            {% endfor %}
+			  </ul>
+			</nav>
+        {% endif %}
+	  </div>
+	</div>
+</div>
+{% endblock content %}

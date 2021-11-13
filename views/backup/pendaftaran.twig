@@ -1,0 +1,371 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<style type="text/css">
+	.table td, .table th {
+	    padding: .40rem;
+	    vertical-align: top;
+	    border: none !important;
+	}
+	#my_camera{
+	 	display: inline-block;
+	}
+	#outer {
+	  width: 100%;
+	  text-align: center;
+	}
+	.div-img-container{
+	    height:200px;width:150px;position:relative;overflow: hidden;
+	}
+
+	.div-img{
+	    position: absolute;top: -9999px;left: -9999px;right: -9999px;bottom: -9999px;margin: auto;
+	}
+	.error {
+	  color: #F00;
+	  /*background-color: #FFF;*/
+	}
+	.display-none {
+	    display: none;
+	}
+</style>
+<link rel='stylesheet' type='text/css' href='{{base_url()}}/assets/css/select2.min.css'/>
+<link rel='stylesheet' type='text/css' href='{{base_url()}}/assets/css/select2-bs4.min.css'/>
+<link rel='stylesheet' type='text/css' href='{{base_url()}}/assets/crop/croppie.css'/>
+<script src="{{base_url()}}/assets/js/validate.min.js"></script>
+<script type="text/javascript" src="{{base_url()}}/assets/js/select2.min.js"></script>
+<script type="text/javascript" src="{{base_url()}}/assets/js/webcam.min.js"></script>
+<script type="text/javascript" src="{{base_url()}}/assets/crop/croppie.min.js"></script>
+<script type="text/javascript" src="{{base_url()}}/assets/js/pendaftaran.js?v=4"></script>
+
+
+
+{#{% if status_kuota == 'kurang' %}#}
+	<div class="containerjoy">
+		<div class="modal" id="modal_take">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">Take Photo</h4>
+		        <button type="button" class="close" id="close_take_modal">&times;</button>
+		      </div>
+
+		      <!-- Modal body -->
+		      <div class="modal-body" id="outer">
+		        	<div id="my_camera"></div>
+		        	<img id="image_prev" hidden alt="">
+		        	<br>
+		        	<div id="snap_foto_div">
+		        		<button id="snap_foto" type="button" class="btn btn-primary btn-block">Take</button>
+		        	</div>
+		        	<div id="snap_ok_div" class="row">
+		        		<button id="snap_ok" type="button" class="btn btn-success col-md-6">Ok</button>
+		        		<button id="snap_again" type="button" class="btn btn-danger col-md-6">Cancel</button>
+		        	</div>
+		        	
+		      </div>
+
+		    </div>
+		  </div>
+		</div>
+
+		<form id="myform" method="post" action="{{base_url()}}/submit_pdftr">
+			<div class="card" style="min-height:66vh">
+			  <div class="card-header">
+			    <b>FORMULIR PENDAFTARAN <i>(Isi dengan teliti dan benar)</i>.</b>
+			  </div>
+			  <div class="card-body">
+			        <div name="myForm">
+			          <h4 class="card-title">1. Kategori Calon Santri.</h4>
+			          <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Untuk Jenjang :</label>
+					    <div class="col-md-10">
+						    <select id="jenjang" name="jenjang" class="form-control" required>
+						      	<option disabled selected hidden value="">---Pilih jenjang pendidikan---</option>
+							    {#<option value="SMP">SMP</option>#}
+							    <option value="SMA">SMA</option>
+						    </select>
+					    </div>
+					  </div>
+			          <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Kategori Santri :</label>
+					    <div class="col-md-10">
+					      	<select id="kategori" name="kategori_pendaftaran" class="form-control" required>
+						      	<option disabled selected hidden value="">---Pilih kategori pendaftaran---</option>
+							    <option value="SANTRI BARU">SANTRI BARU</option>
+							    <option value="SANTRI PINDAHAN">SANTRI PINDAHAN</option>
+						    </select>
+					    </div>
+					  </div>
+					  {# <div id="div_pindahan" class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Pindahan Kelas :</label>
+					    <div class="col-md-10">
+					      	<select class="form-control" name="pindahan_kelas" id="pindahan_kelas"></select>
+					    </div>
+					  </div> #}
+					  <hr>
+			          <h4 class="card-title">2. Data Calon Santri.</h4><br>
+			          <div class="row">
+			          	<div style="padding-left:25px;text-align:center" class="col-md-2">
+			          		<img width="150" height="200" id="image" name="image" src="{{base_url()}}/img/avatar.jpeg" alt=""><br>
+			          		{% if status_button == '1' %}
+    					        <label style="width:150px;border-radius: 0px;margin-bottom:0px" class="btn btn-info btn-xs">Browse Foto
+							    <input style="width:150px;display:none" id="file" name="file" accept=".jpg,.png" type="file"/>
+    							</label><button type="button" id="take_foto" style="width:150px;border-radius: 0px;margin-bottom:0px;margin-top:2px" class="btn btn-success btn-xs">Ambil Foto</button><br>
+    							<span style="color:red;font-size:14px;text-align:center"><i>Limit size (500 KB)</i></span>
+    							<input type="text" id="filename" name="filename" hidden/>
+					        {% else %}
+					            <button type="button" disabled style="width:150px;border-radius: 0px;margin-bottom:0px" class="btn btn-info btn-xs">Browse Foto</button>
+    							<button type="button" disabled style="width:150px;border-radius: 0px;margin-bottom:0px;margin-top:2px" class="btn btn-success btn-xs">Ambil Foto</button><br>
+    							<span style="color:red;font-size:14px;text-align:center"><i>Limit size (500 KB)</i></span>
+					        {% endif %}
+							
+						</div>
+			          	 <div class="col-md-10">
+			          	 	<div class="form-group row form-div-pendaftaran">
+							    <label style="padding-right: 5px;" class="col-md-2 col-form-label form-label-pendaftaran">Nama lengkap :</label>
+							    <div class="col-md-10">
+							      <input id="nama" uppercase type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required/>
+							    </div>
+							</div>
+							<div class="form-group row form-div-pendaftaran">
+							    <label class="col-md-2 col-form-label form-label-pendaftaran">NIK Santri :</label>
+							    <div class="col-md-10">
+							      <input uppercase type="text" class="form-control" placeholder="Nomor Induk Keluarga (NIK). dapat dilihat di kartu keluarga" name="nik" minlength="16" maxlength="16" required/>
+							    </div>
+							</div>
+							<div class="form-group row form-div-pendaftaran">
+							    <label class="col-md-2 col-form-label form-label-pendaftaran">NISN Santri :</label>
+							    <div class="col-md-10">
+							      <input uppercase type="text" class="form-control" placeholder="Nomor induk siswa nasional (Wajib Di isi)" name="nisn" minlength="10" maxlength="10" required/>
+							    </div>
+							</div>
+							<div class="form-group row form-div-pendaftaran">
+							    <label class="col-md-2 col-form-label form-label-pendaftaran">Asal Sekolah :</label>
+							    <div class="col-md-10">
+							      	<select id="asal_sekolah" name="asal_sekolah" class="form-control" required></select>
+							    </div>
+							</div>
+							<div class="form-group row form-div-pendaftaran">
+							    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Sekolah</label>
+							    <div class="col-md-10">
+							      <input type="text" class="form-control" placeholder="Nama sekolah" name="nama_sekolah" uppercase required/>
+							    </div>
+							</div>
+							
+			          	 </div>
+			          </div>
+			          <hr>				  
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama panggilan :</label>
+					    <div class="col-md-10">
+					      <input uppercase type="text" class="form-control" placeholder="Nama Panggilan siswa" name="nama_panggilan" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Jenis kelamin :</label>
+					    <div class="col-md-10">
+					      	<select name="jenis_kelamin" class="form-control" required>
+					      		<option disabled selected hidden value="">---Pilih jenis kelamin---</option>
+							    <option value="LAKI - LAKI">LAKI - LAKI</option>
+							    <option value="PEREMPUAN">PEREMPUAN</option>
+		                  	</select>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Tempat lahir :</label>
+					    <div class="col-md-10">
+					      <input uppercase type="text" class="form-control" placeholder="Tempat kelahiran" name="tempat_lahir" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Tanggal lahir :</label>
+					    <div class="col-md-10">
+					    	<div class="row" >
+					    		<div class="col-md-4" style="padding-left:0px">
+					    			<select name="tahun_lahir" id="tahun_lahir" class="form-control" required></select>
+					    		</div>
+					    		<div class="col-md-4" style="padding-left:5px">
+					    			<select name="bulan_lahir" id="bulan_lahir" class="form-control" required></select>
+					    		</div>
+					    		<div class="col-md-4" style="padding-left:5px;padding-right:0px">
+					    			<select name="hari_lahir" id="hari_lahir" class="form-control" required></select>
+					    		</div>
+					    		<input hidden name="tanggal_lahir" />
+					    	</div>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Alamat :</label>
+					    <div class="col-md-10">
+					      <textarea style="min-height:70px" class="form-control" placeholder="Jalan / RT / RW / Dusun / Blok" name="alamat" required></textarea>
+					    </div>
+					  </div>
+					  	<div class="form-group row form-div-pendaftaran">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Provinsi :</label>
+						    <div class="col-md-10">
+						      <select id="provinsi" class="form-control" required></select>
+						      <input hidden name="provinsi"/>
+						    </div>
+						</div>
+					  	<div class="form-group row form-div-pendaftaran">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Kabupaten :</label>
+						    <div class="col-md-10">
+						      <select id="kabupaten" class="form-control" required></select>
+						      <input hidden name="kabupaten"/>
+						    </div>
+						</div>
+						<div class="form-group row form-div-pendaftaran">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Kecamatan :</label>
+						    <div class="col-md-10">
+						      <select id="kecamatan" class="form-control" required></select>
+						      <input hidden name="kecamatan"/>
+						    </div>
+						</div>
+						<div class="form-group row form-div-pendaftaran">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Kelurahan :</label>
+						    <div class="col-md-10">
+						      <select id="kelurahan" class="form-control" required></select>
+						      <input hidden name="kelurahan"/>
+						    </div>
+						</div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Kode Pos :</label>
+					    <div class="col-md-10">
+					      <input type="number" class="form-control" placeholder="Kode Pos" name="kode_pos" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					      <label class="col-md-2 col-form-label form-label-pendaftaran" style="color: white">Kode Pos :</label>
+					    <div class="col-md-10">
+					      <i>*) Keterangan : Alamat yang di isikan adalah alamat sesuai dengan KK/KTP Orang Tua/Wali</i>
+					    </div>
+					    
+					  </div>
+					  
+					  <hr>
+					  <h4 class="card-title">3. Data Orang Tua / Wali.</h4>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Ibu :</label>
+					    <div class="col-md-10">
+					      <input uppercase placeholder="Nama ibu" type="text" class="form-control" name="nama_ibu" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Ayah :</label>
+					    <div class="col-md-10">
+					      <input uppercase placeholder="Nama ayah" type="text" class="form-control" name="nama_ayah" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Nama Wali :</label>
+					    <div class="col-md-10">
+					      <input uppercase placeholder="Nama wali" type="text" class="form-control" name="nama_wali" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Pendidikan Ibu :</label>
+					    <div class="col-md-10">
+					      <select name="pendidikan_ibu" id="pendidikan_ibu" class="form-control">
+		                  </select>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Pendidikan Ayah :</label>
+					    <div class="col-md-10">
+					      <select name="pendidikan_ayah" id="pendidikan_ayah" class="form-control">
+		                  </select>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Pekerjaan ibu :</label>
+					    <div class="col-md-10">
+					      <input uppercase class="form-control" type="text" placeholder="Pekerjaan ibu" name="pekerjaan_ibu" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Pekerjaan ayah :</label>
+					    <div class="col-md-10">
+					      <input uppercase type="text" class="form-control" placeholder="Pekerjaan ayah" name="pekerjaan_ayah" required/>
+					    </div>
+					  </div>
+					  <div class="form-group row form-div-pendaftaran display-none">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">Alamat Ortu:</label>
+					    <div class="col-md-10">
+					      <textarea style="min-height:70px" name="alamat_ortu" class="form-control" placeholder="Jalan / RT / RW / Dusun / Blok">-</textarea>
+					    </div>
+					  </div>
+					  	<div class="form-group row form-div-pendaftaran display-none">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Provinsi Ortu :</label>
+						    <div class="col-md-10">
+						      <select id="provinsi_ortu" class="form-control" ></select>
+						      <input hidden name="provinsi_ortu" value="-"/>
+						    </div>
+						</div>
+					  	<div class="form-group row form-div-pendaftaran display-none">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Kabupaten Ortu :</label>
+						    <div class="col-md-10">
+						      <select id="kabupaten_ortu" class="form-control" ></select>
+						      <input hidden name="kabupaten_ortu" value="-"/>
+						    </div>
+						</div>
+						<div class="form-group row form-div-pendaftaran display-none">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Kecamatan Ortu :</label>
+						    <div class="col-md-10">
+						      <select id="kecamatan_ortu" class="form-control" ></select>
+						      <input hidden name="kecamatan_ortu" value="-"/>
+						    </div>
+						</div>
+						<div class="form-group row form-div-pendaftaran display-none">
+						    <label class="col-md-2 col-form-label form-label-pendaftaran">Kelurahan Ortu :</label>
+						    <div class="col-md-10">
+						      <select id="kelurahan_ortu" class="form-control" ></select>
+						      <input hidden name="kelurahan_ortu" value="-"/>
+						    </div>
+						</div>
+					  <div class="form-group row form-div-pendaftaran">
+					    <label class="col-md-2 col-form-label form-label-pendaftaran">No.Hp Ortu :</label>
+					    <div class="col-md-10">
+					      <input type="tel" class="form-control" placeholder="Nomor Hp yang aktif orangtua yang tersambung whatsapp" name="no_hp" required/>
+					    </div>
+					  </div>
+					  <hr>			  
+					  <div class="row" style="text-align:right;">
+					  	<div class="col-md-12">
+					  	    {% if status_button == '1' %}
+    					      <button id="button_submit" style="min-width:200px" type="button" class="btn btn-success btn-lg"><b>SUBMIT</b></button>
+					        {% else %}
+					            <button disabled style="min-width:200px" type="button" class="btn btn-success btn-lg"><b>SUBMIT</b></button>
+					        {% endif %}
+					      <div id="loading_submit" class="spinner">
+							  <div class="rect1"></div>
+							  <div class="rect2"></div>
+							  <div class="rect3"></div>
+							  <div class="rect4"></div>
+							  <div class="rect5"></div>
+							  <p>Loading...</p>
+						  </div>
+					    </div>
+					  </div>
+				    </div>
+			  </div>
+			</div>
+		</form> {# form #}
+	</div>
+{#{% else %}#}
+<!--	<div class="containerjoy">
+		<div class="card" style="min-height:66vh">
+		  	<div class="card-header">
+		    	<b>PENGUMUMAN</b>
+		  	</div>
+		  	<div class="card-body">
+		  		<h5>Mohon maaf, pendaftaran sudah ditutup dikarenakan kuota sudah penuh. Pendaftaran akan dibuka kembali gelombang ke-2 pada tanggal <span style="color:red">{{gelombang_two.tanggal_pendaftaran_from | strftime('%d %B %Y')}}</span> sampai dengan <span style="color:red">{{gelombang_two.tanggal_pendaftaran_to | strftime('%d %B %Y')}}</span>. Terimakasih (Panitia PSB Pondok Mufidah Santi Asromo).</h5>
+		  		
+		  	</div>
+		</div>
+	</div> -->
+{#{% endif %}#}
+
+{% endblock content %}

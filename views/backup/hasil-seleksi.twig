@@ -1,0 +1,50 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<style type="text/css">
+	.center-div {
+	  display: table;
+	  margin-right: auto;
+	  margin-left: auto;
+	  margin-top: 100px;
+	  color: grey;
+	}
+</style>
+<div class="containerjoy" style="min-height:65vh">
+	{% if datas|length == 0 %}
+		<div class="center-div">
+			<h3>Saat ini belum tersedia..</h3>
+		</div>
+	{% else %}
+  	  	<div class="card">
+		  <div class="card-header">
+		    <b>HASIL SELEKSI UJIAN.</b>
+		  </div>
+		  <div class="card-body">
+		  	<table class="table table-bordered table-sm table-hover">
+			    <thead>
+			      <tr>
+			        <th>#</th>
+			        <th>File</th>
+			        <th>Action</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      {% for data in datas %}
+			      	<tr>
+				        <td width="50">{{loop.index}}</td>
+				        <td style="color:blue">{{data.judul}}</td>
+				        <td style="padding:0px 5px;width:120px">
+				        	<a href="{{base_url()}}/files/{{data.url_file}}" target="_blank" class="btn btn-primary btn-sm" style="padding:0px 10px;">Download</a>
+				        </td>
+				    </tr>
+			      {% endfor %}
+			    </tbody>
+			</table>
+		  	
+		  </div>
+		</div>
+	{% endif %}
+	
+</div>
+{% endblock content %}
