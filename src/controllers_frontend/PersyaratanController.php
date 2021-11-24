@@ -40,7 +40,7 @@ class PersyaratanController {
 			return $this->view->render($response, "/persyaratan.twig", array(
 		    	"title" => "Persyaratan Pendaftaran Santri Asromo Online",
 		    	"biaya" => $rupiah($config->biaya_pendaftaran),
-		    	"active" => "pendaftaran"
+		    	"active" => "persyaratan"
 		    ));
 		} catch (Exception $e) {
 			echo $e;

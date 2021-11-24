@@ -50,7 +50,7 @@ class ListpendaftarController {
             $datas = $sth->fetchAll();
 			return $this->view->render($response, "/list-pendaftar.twig", array(
 		    	"title" => "List Pendaftar Santri Asromo Online",
-		    	"active" => "pendaftaran",
+		    	"active" => "list-pendaftar",
 		    	"datas" => $datas,
 		    	"value" => "",
 		    	"needed" => $count > $limit,
@@ -79,7 +79,7 @@ class ListpendaftarController {
             $data = $sth->fetchObject();
 			return $this->view->render($response, "/list-pendaftar-detail.twig", array(
 		    	"title" => $data->nama." - pendaftaran Santri Asromo Online",
-		    	"active" => "pendaftaran",
+		    	"active" => "list-pendaftar-detail",
 		    	"data" => $data,
 		    	"value" => "",
 		    	
@@ -110,7 +110,7 @@ class ListpendaftarController {
             $datas = $sth->fetchAll();
 			return $this->view->render($response, "/list-pendaftar.twig", array(
 		    	"title" => $q." Pendaftar Santri Asromo Online",
-		    	"active" => "pendaftaran",
+		    	"active" => "list-pendaftar",
 		    	"value" => $q,
 		    	"datas" => $datas,
 		    	"skip" => 0,

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{title}}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/css/util.css">
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	
+	<div class="bg-img1 size1 overlay1">
+		<div class="size1 p-l-15 p-r-15 p-t-30 p-b-50">
+			<br>
+			<br>
+			<br>
+			<div class="wsize1 m-lr-auto">
+				<p class="txt-center l1-txt1 p-b-60">
+					PSB Online Santi Asromo akan dibuka pada <span class="l1-txt2">{{tanggal_pembukaan | strftime('%A, %d %B %Y')}}</span>
+				</p>
+			</div>
+			<div class="flex-w flex-c-m cd100 wsize1 m-lr-auto">
+				<div class="flex-col-c-m size2 bor1 m-l-10 m-r-10 m-b-15">
+					<span class="l1-txt3 p-b-9 days"></span>
+					<span class="s1-txt2">Days</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-10 m-r-10 m-b-15">
+					<span class="l1-txt3 p-b-9 hours"></span>
+					<span class="s1-txt2">Hours</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-10 m-r-10 m-b-15">
+					<span class="l1-txt3 p-b-9 minutes"></span>
+					<span class="s1-txt2">Minutes</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-10 m-r-10 m-b-15">
+					<span class="l1-txt3 p-b-9 seconds"></span>
+					<span class="s1-txt2">Seconds</span>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div style="width:100%;margin:auto;text-align:center">
+			    <a class="btn btn-lg btn-success" href="{{base_url()}}/brosur/BROSUR_ASROMO.pdf" target="_blank">DOWNLOAD BROSUR</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{{base_url()}}/assets/comingsoon/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{base_url()}}/assets/comingsoon/vendor/bootstrap/js/popper.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{base_url()}}/assets/comingsoon/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment.min.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment-timezone.min.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment-timezone-with-data.min.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/countdowntime.js"></script>
+	<script>
+		var tanggal_pembukaan = '{{tanggal_pembukaan}}';
+		var arr_tanggal = tanggal_pembukaan.split('-');
+		$('.cd100').countdown100({
+			endtimeYear: arr_tanggal[0],
+			endtimeMonth: arr_tanggal[1],
+			endtimeDate: arr_tanggal[2],
+			endtimeHours: 00,
+			endtimeMinutes: 00,
+			endtimeSeconds: 00
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{{base_url()}}/assets/comingsoon/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{{base_url()}}/assets/comingsoon/js/main.js"></script>
+
+</body>
+</html>

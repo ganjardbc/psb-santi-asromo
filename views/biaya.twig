@@ -1,0 +1,162 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div>
+    <div class="main-screen">
+        <div class="self-padding" style="padding-bottom: 0;">
+            <div class="space space-center">
+                <h2 class="fonts fonts-32px bold black no-line-height">Biaya Pendidikan</h2>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                </div>
+                <div class="width width-90 width-center">
+                    <p class="fonts fonts-16px grey">Berikut biaya pendidikan untuk SMP & SMA.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="medium-screen">
+        <div class="width width-full display-flex display-mobile wrap">
+
+                <div class="width width-row-2">
+                    <div style="padding: 15px;">
+                        <div class="card box-shadow full-rounded bg-white">
+                            <div style="position: relative; padding: 15px;">
+                                <div class="fonts fonts-26 black semibold fonts-center">Biaya SMP</div>
+                                <div class="display-flex center">
+                                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                                </div>
+                                <div class="fonts fonts-11 grey fonts-center" style="margin-bottom: 10px;">Berikut biaya pendidikan untuk SMP</div>
+                                <div class="display-flex center" style="padding-top: 5px;">
+                                    <div class="card-value">
+                                        <i class="fa fa-lw fa-star"></i>
+                                        Direkomendasikan
+                                    </div>
+                                </div>
+
+                                <div style="padding-top: 50px; padding-bottom: 50px;" class="border-dashed-bottom">
+                                    {% for data in datas %}
+                                        <div class="display-flex" style="padding-top: 10px; padding-bottom: 10px;">
+                                            <div class="fonts green" style="width: 40px; padding-top: 2px;">
+                                                <i class="far fa-lg fa-check-circle"></i>
+                                            </div>
+                                            <div style="width: calc(100% - 40px)">
+                                                <div class="fonts fonts-11 grey">{{ data.nama_biaya }}</div>
+                                                <div class="fonts fonts-16 black semibold" style="margin-top: 5px;">Rp. {{data.harga_smp | number_format(0,',','.')}}</div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div style="padding-top: 50px; padding-bottom: 50px;">
+                                    <div class="fonts fonts-11 black semibold fonts-center">Jumlah Biaya</div>
+                                    <div class="fonts fonts-26 green semibold fonts-center" style="margin-top: 5px;">Rp. {{total_harga.total_harga_smp | number_format(0,',','.')}}</div>
+                                    <div class="display-flex center" style="padding-top: 30px;">
+                                        <a href="{{base_url()}}/pendaftaran">
+                                            <button class="btn btn-main" style="margin-left: 0; margin-right: 0;">
+                                                Daftar Sekarang
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="width width-row-2">
+                    <div style="padding: 15px;">
+                        <div class="card box-shadow full-rounded bg-white">
+                            <div style="position: relative; padding: 15px;">
+                                <div class="fonts fonts-26 black semibold fonts-center">Biaya SMA</div>
+                                <div class="display-flex center">
+                                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                                </div>
+                                <div class="fonts fonts-11 grey fonts-center" style="margin-bottom: 10px;">Berikut biaya pendidikan untuk SMA</div>
+                                <div class="display-flex center" style="padding-top: 5px;">
+                                    <div class="card-value">
+                                        <i class="fa fa-lw fa-star"></i>
+                                        Direkomendasikan
+                                    </div>
+                                </div>
+
+                                <div style="padding-top: 50px; padding-bottom: 50px;" class="border-dashed-bottom">
+                                    {% for data in datas %}
+                                        <div class="display-flex" style="padding-top: 10px; padding-bottom: 10px;">
+                                            <div class="fonts green" style="width: 40px; padding-top: 2px;">
+                                                <i class="far fa-lg fa-check-circle"></i>
+                                            </div>
+                                            <div style="width: calc(100% - 40px)">
+                                                <div class="fonts fonts-11 grey">{{ data.nama_biaya }}</div>
+                                                <div class="fonts fonts-16 black semibold" style="margin-top: 5px;">Rp. {{data.harga_sma | number_format(0,',','.')}}</div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div style="padding-top: 50px; padding-bottom: 50px;">
+                                    <div class="fonts fonts-11 black semibold fonts-center">Jumlah Biaya</div>
+                                    <div class="fonts fonts-26 green semibold fonts-center" style="margin-top: 5px;">Rp. {{total_harga.total_harga_sma | number_format(0,',','.')}}</div>
+                                    <div class="display-flex center" style="padding-top: 30px;">
+                                        <a href="{{base_url()}}/pendaftaran">
+                                            <button class="btn btn-main" style="margin-left: 0; margin-right: 0;">
+                                                Daftar Sekarang
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+        </div>
+
+        <div class="width width-full" style="padding-top: 30px; padding-bottom: 0;">
+            <div class="width width-row-2 width-center">
+                <div style="padding: 15px;">
+                    <div class="fonts fonts-11 black semibold" style="margin-bottom: 5px;">Keterangan</div>
+                    <div class="fonts fonts-11 black">Pembayaran perbulan/SPP untuk bulan-bulan selanjutnya :</div>
+                    <div style="padding-top: 5px; padding-bottom: 5px;">
+                        <div class="display-flex" style="padding-top: 5px; padding-bottom: 5px;">
+                            <div class="fonts grey" style="width: 30px;">
+                                <i class="fa fa-lw fa-info-circle"></i>
+                            </div>
+                            <div style="width: calc(100% - 30px); padding-top: 2px;" class="display-flex space-between">
+                                <div class="fonts fonts-11 black">SMP</div>
+                                <div class="fonts fonts-11 black semibold">Rp. {{ket.biaya_spp_smp | number_format(0,',','.')}}</div>
+                            </div>
+                        </div>
+                        <div class="display-flex" style="padding-top: 5px; padding-bottom: 5px;">
+                            <div class="fonts grey" style="width: 30px;">
+                                <i class="fa fa-lw fa-info-circle"></i>
+                            </div>
+                            <div style="width: calc(100% - 30px); padding-top: 2px;" class="display-flex space-between">
+                                <div class="fonts fonts-11 black">SMA</div>
+                                <div class="fonts fonts-11 black semibold">Rp. {{ket.biaya_spp_sma | number_format(0,',','.')}}</div>
+                            </div>
+                        </div>
+                        <div class="display-flex" style="padding-top: 5px; padding-bottom: 5px;">
+                            <div class="fonts grey" style="width: 30px;">
+                                <i class="fa fa-lw fa-info-circle"></i>
+                            </div>
+                            <div style="width: calc(100% - 30px); padding-top: 2px;" class="display-flex space-between">
+                                <div class="fonts fonts-11 black"><i>Laundry</i> (tidak diwajibkan)</div>
+                                <div class="fonts fonts-11 black semibold">Rp. {{ket.biaya_laundry | number_format(0,',','.')}}</div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="display-flex center" style="padding-top: 30px;">
+                        <a href="{{base_url()}}/brosur/BROSUR_ASROMO_1.pdf" target="_blank">
+                            <button class="btn btn-sekunder">
+                                <i class="icn icn-left fa fa-lw fa-file"></i>
+                                Download Brosur Terbaru
+                            </button>
+                        </a>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </div>
+</div>
+{% endblock content %}

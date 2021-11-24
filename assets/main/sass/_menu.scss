@@ -14,23 +14,50 @@
             display: block;
         }
         &.active {
-            color: $black;
+            color: $main-color;
+            a {
+                color: $main-color;
+            }
         }
-        a {
+        .icn {
+            margin-left: 5px;
+        }
+        a, div {
             padding: 12.8px 15px;
             margin: 0;
             color: $grey;
             display: block;
             font-family: 'GraphikSemibold' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             &:hover {
-                color: $black;
+                color: $main-color;
             }
-            &.router-link-exact-active {
-                color: $black;
-            }
-            // &.router-link-active {
-            //     color: #151f2d;
+            // &.active {
+            //     color: $main-color;
             // }
+        }
+        &:hover {
+            color: $main-color;
+            div {
+                color: $main-color;
+            }
+            ul {
+                display: block;
+                transition: 0.3s;
+            }
+        }
+        ul {
+            position: absolute;
+            width: 200px;
+            top: 40px;
+            left: 0;
+            box-shadow: $shadow-bold;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 20px 10px;
+            z-index: 1;
+            background-color: #fff;
+            display: none;
+            transition: 0.3s;
         }
     }
 }

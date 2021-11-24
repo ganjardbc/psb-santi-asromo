@@ -56,7 +56,7 @@ class CetakkartuController {
             $datas = $sth->fetchAll();
 			return $this->view->render($response, "/cetak-kartu.twig", array(
 		    	"title" => "Cetak Kartu Santri Asromo Online",
-		    	"active" => "pendaftaran",
+		    	"active" => "cetak-kartu",
 		    	"datas" => $datas,
 		    	"value" => "",
 		    	"needed" => $count > $limit,
@@ -92,7 +92,7 @@ class CetakkartuController {
             $datas = $sth->fetchAll();
 			return $this->view->render($response, "/cetak-kartu.twig", array(
 		    	"title" => $q." Cetak kartu Santri Asromo Online",
-		    	"active" => "pendaftaran",
+		    	"active" => "cetak-kartu",
 		    	"value" => $q,
 		    	"datas" => $datas,
 		    	"skip" => 0,

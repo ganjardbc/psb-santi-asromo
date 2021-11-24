@@ -1,0 +1,76 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div>
+    <div class="main-screen">
+        <div class="self-padding" style="padding-bottom: 0;">
+            <div class="space space-center">
+                <h2 class="fonts fonts-32px bold black no-line-height">Cetak Kartu</h2>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                </div>
+                <div class="width width-90 width-center">
+                    <p class="fonts fonts-16px grey">Cetak Kartu Ujian</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-screen">
+        <div class="border-full">
+            <div style="padding: 15px;">
+                <form class="display-flex" method="GET" action="{{base_url()}}/cetak-kartu-s">
+                    <input name="q" type="text" class="field field-sekunder" placeholder="Cari berdasarkan nama / nik / nisn" value="{{value}}" required>
+                    <div style="padding-left: 10px;">
+                        <button class="btn btn-main no-radius" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container border-top"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. Ujian</th>
+                            <th>Nama</th>
+                            <th>No. Ruangan</th>
+                            <th>No. Bangku</th>
+                            <th>Gelombang</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in datas %}
+                            <tr>
+                                <td>{{data.no_kartu}}</td>
+                                <td>{{data.nama}}</td>
+                                <td>{{data.no_ruangan}}</td>
+                                <td>{{data.no_bangku}}</td>
+                                <td>{{data.gelombang}}</td>
+                                <td class="display-flex">
+                                    <a href="{{base_url()}}/list-pendaftar-detail/{{data.id_pendaftaran}}" class="btn btn-small btn-main" style="width: 60px;">Detail</a>
+                                    <a target="_blank" href="{{base_url()}}/h312ud1/cetak.php?id={{data.id_pendaftaran}}&no_ujian={{data.no_kartu}}" class="btn btn-small btn-sekunder" style="width: 60px;">Cetak</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% if needed %}
+                <div style="padding: 15px;">
+                    <nav class="smart-pagination" aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% for i in 1..lastpage %}
+                                {% if i == page %}
+                                    <li class="page-item active"><a class="page-link" href>{{i}}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="{{base_url()}}/cetak-kartu?page={{i}}">{{i}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div> 
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -31,7 +31,7 @@ class PanduanController {
             
 			return $this->view->render($response, "/panduan.twig", array(
 		    	"title" => "Panduan Pendaftaran Santri Asromo Online",
-		    	"active" => "pendaftaran"
+		    	"active" => "panduan"
 		    ));
 		} catch (Exception $e) {
 			echo $e;

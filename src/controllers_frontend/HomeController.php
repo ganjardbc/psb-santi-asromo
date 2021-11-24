@@ -33,9 +33,15 @@ class HomeController {
 		    // 	"title" => "Pendaftaran Santri Asromo Online",
 		    // 	"active" => "home"
 		    // ));
-			return $this->view->render($response, "/home.php", array(
+			$benefit = [
+				['image' => 'img/persyaratan.png', 'title' => 'Konsultasi Jurusan Gratis', 'desc' => 'Sebanyak apapun konsultasi belajar dan jurusan tidak ada tambahan biaya.', 'route' => '/'],
+				['image' => 'img/panduan2.png', 'title' => 'Pembelajaran Online', 'desc' => 'Fasilitas belajar online di aplikasi belajar NF dan video pembelajaran di portal SIP dan Aplikasi Skolla', 'route' => '/'],
+				['image' => 'img/reg.png', 'title' => 'Peluang Beasiswa', 'desc' => 'Ditawarkan pada 100 siswa peringkat teratas yang memenuhi persyaratan', 'route' => '/'],
+			];
+			return $this->view->render($response, "/home.twig", array(
 		    	"title" => "Pendaftaran Santri Asromo Online",
-		    	"active" => "home"
+		    	"active" => "home",
+				"benefit" => $benefit,
 		    ));
 		} catch (Exception $e) {
 			echo $e;

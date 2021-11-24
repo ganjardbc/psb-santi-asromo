@@ -29,19 +29,20 @@ class HasilseleksiController {
 	            }
             }
           */
-			     $sql = "select id_session from psb_config";
+		  $sql = "select id_session from psb_config";
           $sth = $this->db->prepare($sql);
           $sth->execute();
           $config = $sth->fetchObject();
           $id_session = $config->id_session;
 
           $sql = "select * from psb_file_hasil_seleksi where id_session = $id_session";
+        //   $sql = "select * from psb_file_hasil_seleksi";
           $sth = $this->db->prepare($sql);
           $sth->execute();
           $datas = $sth->fetchAll();
 			     return $this->view->render($response, "/hasil-seleksi.twig", array(
   		    	"title" => "Hasil seleksi ujian - Santri Asromo Online",
-  		    	"active" => "pendaftaran",
+  		    	"active" => "hasil-seleksi",
   		    	"datas" => $datas
   		    ));
 		} catch (Exception $e) {

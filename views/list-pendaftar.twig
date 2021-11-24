@@ -1,0 +1,79 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div>
+    <div class="main-screen">
+        <div class="self-padding" style="padding-bottom: 0;">
+            <div class="space space-center">
+                <h2 class="fonts fonts-32px bold black no-line-height">List Pendaftar</h2>
+                <div class="width width-100 width-center">
+                    <p class="fonts fonts-16px grey">Berikut calon santri yang sudah mendaftar di Santi Asromo</p>
+                </div>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 0;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-screen">
+        <div class="border-full">
+            <div style="padding: 15px;">
+                <form class="display-flex" method="GET" action="{{base_url()}}/list-pendaftar-s">
+                    <input name="q" type="text" class="field field-sekunder" placeholder="Cari berdasarkan nama / nik / nisn" value="{{value}}" required>
+                    <div style="padding-left: 10px;">
+                        <button class="btn btn-main no-radius" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container border-top">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="small-col">#</th>
+                            <th>Nama</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Jenjang</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in datas %}
+                        <tr>
+                            <td class="small-col">{{loop.index+skip}}</td>
+                            <td>{{data.nama}}</td>
+                            <td>{{data.jenis_kelamin}}</td>
+                            <td>{{data.jenjang}}</td>
+                            {% if (data.status == 'VERIFIED') %}
+                                <td class="fonts fonts-11 green">{{data.status}}</td>
+                            {% else %}
+                                <td class="fonts fonts-11 red">{{data.status}}</td>
+                            {% endif %}
+                            <td>
+                                <a href="{{base_url()}}/list-pendaftar-detail/{{data.id}}" class="btn btn-small btn-main" style="width: 50px;">Detail</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% if needed %}
+                <div style="padding: 15px;">
+                    <nav class="smart-pagination" aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% for i in 1..lastpage %}
+                                {% if i == page %}
+                                    <li class="page-item active"><a class="page-link" href>{{i}}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="{{base_url()}}/list-pendaftar?page={{i}}">{{i}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -44,13 +44,13 @@ a {
         top: 0;
         left: 0;
         width: 100%;
-        height: 70px;
+        height: 80px;
         background-color: #fff;
         z-index: 100;
         #header-container {
             position: relative;
             width: $max-width;
-            padding-top: 14px;
+            padding-top: 19px;
             margin: auto;
             display: flex;
             justify-content: space-between;
@@ -98,7 +98,10 @@ a {
                 }
             }
             .hc-logo {
-                width: 150px;
+                width: 100px;
+                img {
+                    width: 100%;
+                }
             }
             .hc-menu {
                 margin-top: 2px;
@@ -227,18 +230,35 @@ a {
 
     // conent
     .main-screen {
+        position: relative;
         width: $max-width;
         margin: auto;
         @media (max-width: $min-width) {
             width: 100%;
         }
     }
+    .medium-screen {
+        position: relative;
+        width: $med-width;
+        margin: auto;
+        @media (max-width: $min-width) {
+            width: 100%;
+        }
+    }
     .small-screen {
+        position: relative;
         width: $min-width;
         margin: auto;
         @media (max-width: $min-width) {
             width: 100%;
         }
+    }
+    .border-left-screen {
+        position: absolute;
+        width: 6px;
+        height: 100%;
+        background-color: $main-color;
+        border-radius: 5px;
     }
     .container {
         position: relative;
@@ -328,6 +348,22 @@ a {
     }
     .border-right {
         border-right: $border;
+    }
+
+    .border-dashed-full {
+        border: $border-dashed;
+    }
+    .border-dashed-bottom {
+        border-bottom: $border-dashed;
+    }
+    .border-dashed-top {
+        border-top: $border-dashed;
+    }
+    .border-dashed-left {
+        border-left: $border-dashed;
+    }
+    .border-dashed-right {
+        border-right: $border-dashed;
     }
 }
 

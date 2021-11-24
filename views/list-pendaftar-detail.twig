@@ -1,0 +1,191 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<div>
+    <div class="main-screen">
+        <div class="display-flex space-between" style="padding-top: 30px; padding-bottom: 30px;">
+            <div class="width width-30" style="padding-top: 100px;">
+                <div class="card box-shadow" style="overflow: unset;">
+                    <div class="display-flex center">
+                        <div class="image bg-white box-shadow" style="position: absolute; top: -100px; width: 180px; height: 240px;">
+                            <img src="{{base_url()}}/img/upload/{{data.pas_foto}}" alt="Avatar">
+                        </div>
+                    </div>
+                    <div class="display-flex center border-bottom" style="padding-top: 150px; padding-bottom: 20px;">
+                        <div class="fonts fonts-12 black semibold center">{{data.nama}}</div>
+                    </div>
+                    <div style="padding-top: 20px;">
+                        <div class="fonts fonts-11 black semibold" style="margin-bottom: 15px;">Pendaftaran</div>
+                        <div class="display-flex" style="margin-bottom: 10px;">
+                            <div class="width width-50 fonts fonts-11 black">Status</div>
+                            {% if (data.status == 'VERIFIED') %}
+                                <div class="width width-50 fonts fonts-11 semibold green fonts-right">{{data.status}}</div>
+                            {% else %}
+                                <div class="width width-50 fonts fonts-11 semibold red fonts-right">{{data.status}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="display-flex">
+                            <div class="width width-50 fonts fonts-11 black">Nominal Transfer</div>
+                            <div class="width width-50 fonts fonts-11 semibold black fonts-right">Rp. {{data.nominal_transfer | number_format(0,',','.')}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="width width-65">
+                {% if data.status == 'UNVERIFIED' %}
+                    <div class="card box-shadow" style="overflow: unset; margin-bottom: 80px; margin-top: 30px;">
+                        <div class="float-left-icon bg-main">
+                            <i class="fl-icn fa fa-lg fa-info" style="color: #fff;"></i>
+                        </div>
+                        <div class="card-step" style="padding-top: 30px; padding-bottom: 8px;">
+                            <div class="number small-number green">
+                                <div class="val"><i class="fa fa-lw fa-star"></i></div>
+                            </div>
+                            <div class="info">
+                                <div style="padding: 0 15px;">
+                                    <div class="fonts fonts-11 black">Status verified = Sudah melakukan transfer dan sudah melakukan konfirmasi data.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                            <div class="number small-number green">
+                                <div class="val"><i class="fa fa-lw fa-star"></i></div>
+                            </div>
+                            <div class="info">
+                                <div style="padding: 0 15px;">
+                                    <div class="fonts fonts-11 black">Status unverified = Belum / sudah transfer dan belum melakukan konfirmasi data.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                            <div class="number small-number green">
+                                <div class="val"><i class="fa fa-lw fa-star"></i></div>
+                            </div>
+                            <div class="info">
+                                <div style="padding: 0 15px;">
+                                    <div class="fonts fonts-11 black">Transfer ke :</div>
+                                    <div class="fonts fonts-11 black">BANK MANDIRI SYARIAH (Kode Bank : 451) <br>No. Rekening : 6000 1932 06 <br>Atas nama : PONDOK MUFIDAH SANTI ASROMO .</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                            <div class="number small-number green">
+                                <div class="val"><i class="fa fa-lw fa-star"></i></div>
+                            </div>
+                            <div class="info">
+                                <div style="padding: 0 15px;">
+                                    <div class="fonts fonts-11 black">Pastikan transfer uang dengan nominal yang tertera yaitu sejumlah Rp. {{data.nominal_transfer | number_format(0,',','.')}}.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                            <div class="number small-number green">
+                                <div class="val"><i class="fa fa-lw fa-star"></i></div>
+                            </div>
+                            <div class="info">
+                                <div style="padding: 0 15px;">
+                                    <div class="fonts fonts-11 black">Proses konfirmasi bisa dilakukan via Whatsapp ke nomor 0853-2134-3674 (Ust Ahmad Ubaidillah) atau 0898-8749-215 (Ustadzah Desi Susilawati)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                            <div class="number small-number green">
+                                <div class="val"><i class="fa fa-lw fa-star"></i></div>
+                            </div>
+                            <div class="info">
+                                <div style="padding: 0 15px;">
+                                    <div class="fonts fonts-11 black">Format konfirmasi = nama lengkap, nik dan foto bukti transfer.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="card box-shadow" style="margin-bottom: 80px; margin-top: 30px; overflow: unset;">
+                    <div class="float-left-icon bg-main">
+                        <i class="fl-icn fa fa-lg fa-user" style="color: #fff;"></i>
+                    </div>
+                    <div class="fonts fonts-11 black semibold" style="margin-bottom: 15px; margin-top: 30px;">Data Diri</div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Nama Lengkap</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.nama}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Jenis Kelamin</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.jenis_kelamin}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Tempat Lahir</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.tempat_lahir}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Tanggal Lahir</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.tanggal_lahir}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Alamat Lengkap</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.alamat}}, Kelurahan/desa {{data.kelurahan}}, kecamatan {{data.kecamatan}}, {{data.kabupaten}}, provinsi {{data.provinsi}}.</div>
+                    </div>
+                    <div class="display-flex">
+                        <div class="width width-30 fonts fonts-11 black">Kode Pos</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.kode_pos}}</div>
+                    </div>
+                </div>
+                <div class="card box-shadow" style="margin-bottom: 30px; overflow: unset;">
+                    <div class="float-left-icon bg-main">
+                        <i class="fl-icn fa fa-lg fa-graduation-cap" style="color: #fff;"></i>
+                    </div>
+                    <div class="fonts fonts-11 black semibold" style="margin-bottom: 15px; margin-top: 30px;">Data Sekolah</div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Jenjang</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.jenjang}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">NISN</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.nisn}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">NIK</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.nik}}</div>
+                    </div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Asal Sekolah</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.asal_sekolah}}</div>
+                    </div>
+                    <div class="display-flex">
+                        <div class="width width-30 fonts fonts-11 black">Dari Sekolah</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">{{data.nama_sekolah}}</div>
+                    </div>
+                </div>
+                {# <div class="card box-shadow">
+                    <div class="fonts fonts-11 black semibold" style="margin-bottom: 15px;">Pendaftaran</div>
+                    <div class="display-flex" style="margin-bottom: 10px;">
+                        <div class="width width-30 fonts fonts-11 black">Status</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        {% if (data.status == 'VERIFIED') %}
+                            <div class="width width-68 fonts fonts-11 green">{{data.status}}</div>
+                        {% else %}
+                            <div class="width width-68 fonts fonts-11 red">{{data.status}}</div>
+                        {% endif %}
+                    </div>
+                    <div class="display-flex">
+                        <div class="width width-30 fonts fonts-11 black">Nominal Transfer</div>
+                        <div class="width width-2 fonts fonts-11 black">:</div>
+                        <div class="width width-68 fonts fonts-11 black">Rp. {{data.nominal_transfer | number_format(0,',','.')}}</div>
+                    </div>
+                </div> #}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -79,11 +79,23 @@
     &.green {
         color: $green;
     }
+    &.red {
+        color: $red;
+    }
     &.no-line-height {
         line-height: 1.2;
     }
     &.text-shadow {
         text-shadow: $shadow-bold;
+    }
+    &.fonts-center {
+        text-align: center;
+    }
+    &.fonts-left {
+        text-align: left;
+    }
+    &.fonts-right {
+        text-align: right;
     }
     @for $var from 0 to 1000 {
         &.fonts-#{$var} {

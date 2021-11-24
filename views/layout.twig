@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Pendaftaran santri asromo online">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/main/icons/fontawesome/css/all.min.css">
+  <link rel='stylesheet' type='text/css' href='{{base_url()}}/assets/main/sass/app.css'/>
+  <script src="{{base_url()}}/assets/js/jquery.min.js"></script>
+  <script src="{{base_url()}}/assets/js/proper.min.js"></script>
+  <script src="{{base_url()}}/assets/js/moment.min.js"></script>
+  <script src="{{base_url()}}/assets/js/sweetalert.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="header">
+        <div id="header-container">
+            <div class="hc-logo">
+                <a href="{{base_url()}}">
+                    <img src="{{base_url()}}/img/logo2.png">
+                </a>
+            </div>
+            <div class="hc-open">
+                <button class="btn btn-icon btn-white">
+                    <i class="fa fa-lg fa-bars"></i>
+                </button>
+            </div>
+            <div class="hc-info open">
+                <div class="display-flex display-mobile">
+                    <div class="hc-menu-mobile">
+                        <div class="display-flex space-between align-center">
+                            <div class="fonts fonts-11 black semibold">
+                                Menu
+                            </div>
+                            <button class="btn btn-icon btn-white">
+                                <i class="fa fa-lg fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hc-menu">
+                        <div class="hc-navigator display-flex" style="margin-right: 0;">
+                            <ul class="navbar">
+                                <li class="{{active == 'home' ? 'active' : ''}}">
+                                    <a href="{{base_url()}}">
+                                        Beranda
+                                    </a>
+                                </li>
+                                <li class="{{active == 'selayang' ? 'active' : ''}}">
+                                    <a href="{{base_url()}}/selayang-pandang">
+                                        Selayang Pandang
+                                    </a>
+                                </li>
+                                <li class="{{active == 'agenda' ? 'active' : ''}}">
+                                    <a href="{{base_url()}}/agenda-psb">
+                                        Agenda PSB
+                                    </a>
+                                </li>
+                                <li class="{{active == 'biaya' ? 'active' : ''}}">
+                                    <a href="{{base_url()}}/biaya-pendidikan">
+                                        Biaya Pendidikan
+                                    </a>
+                                </li>
+                                <li>
+                                    <div>
+                                        Lainnya
+                                        <i class="icn fa fa-lw fa-caret-down"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="{{active == 'persyaratan' ? 'active' : ''}}">
+                                            <a href="{{base_url()}}/persyaratan">
+                                                Persyaratan Pendaftaran 
+                                            </a>
+                                        </li>
+                                        <li class="{{active == 'panduan' ? 'active' : ''}}">
+                                            <a href="{{base_url()}}/panduan">
+                                                Panduan Pendaftaran
+                                            </a>
+                                        </li>
+                                        <li class="{{active == 'list-pendaftar' ? 'active' : ''}}">
+                                            <a href="{{base_url()}}/list-pendaftar">
+                                                Lihat Pendaftar 
+                                            </a>
+                                        </li>
+                                        <li class="{{active == 'cetak-kartu' ? 'active' : ''}}">
+                                            <a href="{{base_url()}}/cetak-kartu">
+                                                Cetak Kartu 
+                                            </a>
+                                        </li>
+                                        <li class="{{active == 'hasil-seleksi' ? 'active' : ''}}">
+                                            <a href="{{base_url()}}/hasil-seleksi">
+                                                Lihat Hasil Seleksi 
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {# <li>
+                                    <a href="/">
+                                        INFO LANJUT   
+                                    </a>
+                                </li> #}
+                            </ul>
+                            <div style="margin-left: 15px;">
+                                <a href="{{base_url()}}/pendaftaran">
+                                    <button class="btn btn-main">
+                                        Daftar Sekarang
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="body">
+        {% block content %} {% endblock %}
+    </div> 
+    <div id="footer">
+        <div id="footer-content">
+            <div class="width width-30 width-mobile">
+                <img 
+                    src="{{base_url()}}/img/logo2.png"
+                    style="
+                        position: relative; 
+                        height: 50px;
+                        margin-bottom: 20px;
+                    ">
+                <img 
+                    src="{{base_url()}}/img/logo3.png" 
+                    style="
+                        position: relative; 
+                        height: 50px;
+                        margin-left: 15px;
+                        margin-bottom: 20px;
+                    ">
+                <div class="fonts fonts-10 grey">This Site All Rights Reserved @2021</div>
+                <div class="fonts fonts-10 grey">Pondok Mufidah Santi Asromo Islamic Boarding School</div>
+                <div style="margin-bottom: 30px;">
+                    <span class="fonts fonts-10 grey">Developed by</span>
+                    <span class="fonts fonts-10 black smibold">Ganjar Hadiatna</span>
+                </div>
+            </div>
+
+            <div class="width width-45 width-mobile display-flex space-between" style="margin-bottom: 30px;">
+                <div style="width: 50%;">
+                    <div class="fonts fonts-13px grey" style="margin-bottom: 10px;">Lainnya</div>
+                    <ul class="menu-list transparent">
+                        <li class="ml-list">
+                            <a href="http://santiasromo.or.id/" target="_blank" class="ml-link">
+                                Info Lebih Lanjut
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="width: 50%;">
+                    <div class="fonts fonts-13px grey" style="margin-bottom: 10px;">Kontak</div>
+                    <ul class="menu-list transparent">
+                        <li class="ml-list">
+                            <a href="tel:+62 8532 1343 674" class="ml-link">
+                                +62 8532 1343 674
+                            </a>
+                        </li>
+                        <li class="ml-list">
+                            <a href="tel:+62 8988 7492 15" class="ml-link">
+                                +62 8988 7492 15
+                            </a>
+                        </li>
+                        <li class="ml-list">
+                            <a href="mailto:admin@psbsantiasromo.com" class="ml-link">
+                                admin@psbsantiasromo.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="width width-13 width-mobile">
+                <div class="fonts fonts-13px grey" style="margin-bottom: 15px;">Sosial Media</div>
+                <div class="display-flex" style="margin-bottom: 15px;">
+                    <a href="https://web.facebook.com/ganjarhadiatna.gh/" target="_blank" style="margin-right: 5px;">
+                        <button class="btn btn-icon btn-small-radius btn-sekunder">
+                            <i class="fab fa-lg fa-facebook"></i>
+                        </button>
+                    </a>
+                    <a href="https://www.instagram.com/ganjar_hadiatna/" target="_blank" style="margin-right: 5px;">
+                        <button class="btn btn-icon btn-small-radius btn-sekunder">
+                            <i class="fab fa-lg fa-instagram"></i>
+                        </button>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=+62-8969-9181-669" target="_blank">
+                        <button class="btn btn-icon btn-small-radius btn-sekunder">
+                            <i class="fab fa-lg fa-whatsapp"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

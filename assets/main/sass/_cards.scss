@@ -4,6 +4,9 @@
     padding: 20px;
     border-radius: 8px;
     overflow: hidden;
+    &.full-rounded {
+        border-radius: 15px;
+    }
     &.mobile-grid {
         display: flex;
         flex-direction: row;
@@ -38,6 +41,21 @@
         background-color: #000; 
         border-radius: 0; 
         overflow: hidden;
+    }
+    .float-left-icon {
+        position: absolute;
+        top: -30px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background-color: #fff;
+        box-shadow: $shadow;
+        .fl-icn {
+            @include post_center(absolute);
+            font-size: 26px;
+            color: $grey;
+        }
     }
 }
 
@@ -355,6 +373,20 @@
             font-weight: 600;
             color: $black;
             @include post_center(absolute);
+        }
+        &.small-number {
+            width: 20px;
+            height: 20px;
+            .val {
+                font-size: 12px;
+            }
+        }
+        &.green {
+            background-color: $green;
+            border: 0 $green solid;
+            .val {
+                color: #fff;
+            }
         }
     }
     .info {

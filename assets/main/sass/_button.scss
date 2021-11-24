@@ -19,7 +19,11 @@ a {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    border-radius: 4px;
+    border-radius: 45px;
+    box-shadow: $shadow;
+    &.no-radius {
+        border-radius: 3px;
+    }
     .notif {
         position: absolute;
         top: 0;
@@ -47,7 +51,7 @@ a {
     }
     &.btn-main {
         background-color: $main-color;
-        color: $black;
+        color: #fff;
         border: 1px $main-color solid;
         &:hover {
             background-color: rgba($color: $main-color, $alpha: 0.8);
