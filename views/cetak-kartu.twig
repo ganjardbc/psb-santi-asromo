@@ -5,12 +5,12 @@
     <div class="main-screen">
         <div class="self-padding" style="padding-bottom: 0;">
             <div class="space space-center">
-                <h2 class="fonts fonts-32px bold black no-line-height">Cetak Kartu</h2>
-                <div class="display-flex center">
-                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-                </div>
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">Cetak Kartu</h2>
                 <div class="width width-90 width-center">
                     <p class="fonts fonts-16px grey">Cetak Kartu Ujian</p>
+                </div>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
                 </div>
             </div>
         </div>
@@ -32,9 +32,9 @@
                         <tr>
                             <th>No. Ujian</th>
                             <th>Nama</th>
-                            <th>No. Ruangan</th>
-                            <th>No. Bangku</th>
-                            <th>Gelombang</th>
+                            <th class="mobile-hidden">No. Ruangan</th>
+                            <th class="mobile-hidden">No. Bangku</th>
+                            <th class="mobile-hidden">Gelombang</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,10 +43,10 @@
                             <tr>
                                 <td>{{data.no_kartu}}</td>
                                 <td>{{data.nama}}</td>
-                                <td>{{data.no_ruangan}}</td>
-                                <td>{{data.no_bangku}}</td>
-                                <td>{{data.gelombang}}</td>
-                                <td class="display-flex">
+                                <td class="mobile-hidden">{{data.no_ruangan}}</td>
+                                <td class="mobile-hidden">{{data.no_bangku}}</td>
+                                <td class="mobile-hidden">{{data.gelombang}}</td>
+                                <td class="display-flex display-mobile">
                                     <a href="{{base_url()}}/list-pendaftar-detail/{{data.id_pendaftaran}}" class="btn btn-small btn-main" style="width: 60px;">Detail</a>
                                     <a target="_blank" href="{{base_url()}}/h312ud1/cetak.php?id={{data.id_pendaftaran}}&no_ujian={{data.no_kartu}}" class="btn btn-small btn-sekunder" style="width: 60px;">Cetak</a>
                                 </td>

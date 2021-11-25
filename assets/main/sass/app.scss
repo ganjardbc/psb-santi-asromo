@@ -118,6 +118,11 @@ a {
                     @media (max-width: $min-width) {
                         margin-right: 0;
                     }
+                    .navbar {
+                        @media (max-width: $min-width) {
+                            margin-bottom: 15px;
+                        }
+                    }
                 }
                 .hc-link {
                     margin-left: 5px;
@@ -160,6 +165,12 @@ a {
                 width: calc(100% - 30px);
                 padding: 0 15px;
                 flex-direction: column;;
+            }
+        }
+        .footer-center {
+            @media (max-width: $min-width) {
+                text-align: center;
+                margin: auto;
             }
         }
     }

@@ -334,6 +334,7 @@ jQuery(document).ready(function() {
 	});
 
 	$("#take_foto").click(function () {
+		console.log('test');
 	$("#modal_take").modal("show");
 		if(window.innerHeight < window.innerWidth){
 			Webcam.set({

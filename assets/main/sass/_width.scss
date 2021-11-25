@@ -12,6 +12,12 @@
     &.width-center {
         margin: auto;
     }
+    &.width-row-1 {
+        width: calc(100% / 1.5);
+        @media (max-width: $min-width) {
+            width: 100%;
+        }
+    }
     &.width-row-2 {
         width: calc(100% / 2);
         @media (max-width: $min-width) {

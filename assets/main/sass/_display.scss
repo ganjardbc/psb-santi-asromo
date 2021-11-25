@@ -54,6 +54,16 @@
     &.column-reverse {
         flex-direction: column-reverse;
     }
+    &.mobile-center {
+        @media (max-width: $min-width) {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &.mobile-row-reverse {
+        flex-direction: row-reverse;
+    }
 }
 
 .display-popup {

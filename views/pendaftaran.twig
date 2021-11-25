@@ -70,12 +70,12 @@
 	<div class="medium-screen">
         <div class="self-padding" style="padding-bottom: 0;">
             <div class="space space-center">
-                <h2 class="fonts fonts-32px bold black no-line-height">Formulir Pendaftaran</h2>
-                <div class="display-flex center">
-                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-                </div>
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">Formulir Pendaftaran</h2>
                 <div class="width width-90 width-center">
                     <p class="fonts fonts-16px grey">Isi formulir dengan teliti dan benar</p>
+                </div>
+				<div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
                 </div>
             </div>
         </div>
@@ -113,8 +113,8 @@
 		<div class="card box-shadow" style="margin-bottom: 30px;">
 			<div style="padding: 15px;">
 				<h4 class="fonts fonts-14 black">2. Data Calon Santri</h4>
-				<div class="display-flex space-between" style="padding-top: 30px;">
-					<div class="width width-25">
+				<div class="display-flex display-mobile space-between" style="padding-top: 30px;">
+					<div class="width width-25 width-mobile">
 						<div style="margin-bottom: 15px;" class="display-flex center">
 							<img width="150" height="200" id="image" name="image" src="{{base_url()}}/img/avatar.jpeg" alt=""><br>
 						</div> 
@@ -123,18 +123,18 @@
 								Browse Foto
 								<input style="width:150px;display:none" id="file" name="file" accept=".jpg,.png" type="file"/>
 							</label>
-							<button type="button" id="take_foto" style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button>
+							{# <button type="button" id="take_foto" style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button>  #}
 							<br>
     						<span class="fonts fonts-10 center error"><i>Limit size (500 KB)</i></span>
     						<input type="text" id="filename" name="filename" hidden/>
 					    {% else %}
 					        <button type="button" disabled style="margin-bottom: 0px" class="btn btn-main btn-full">Browse Foto</button>
-    						<button type="button" disabled style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button>
+    						{# <button type="button" disabled style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button> #}
 							<br>
     						<span class="fonts fonts-10 center error"><i>Limit size (500 KB)</i></span>
 					    {% endif %}
 					</div>
-					<div class="width width-70">
+					<div class="width width-70 width-mobile">
 						<div class="display-flex align-center" style="margin-bottom: 15px;">
 							<label class="width width-28 fonts fonts-11 black">Nama lengkap</label>
 							<label class="width width-2 fonts fonts-11 black">:</label>
@@ -144,6 +144,13 @@
 						</div>
 						<div class="display-flex align-center" style="margin-bottom: 15px;">
 							<label class="width width-28 fonts fonts-11 black">NIK Santri</label>
+							<label class="width width-2 fonts fonts-11 black">:</label>
+							<div class="width width-70">
+								<input uppercase type="text" class="field field-sekunder" placeholder="Nomor Induk Keluarga (NIK). dapat dilihat di kartu keluarga" name="nik" minlength="16" maxlength="16" required/>
+							</div>
+						</div>
+						<div class="display-flex align-center" style="margin-bottom: 15px;">
+							<label class="width width-28 fonts fonts-11 black">NISN Santri</label>
 							<label class="width width-2 fonts fonts-11 black">:</label>
 							<div class="width width-70">
 								<input uppercase type="text" class="field field-sekunder" placeholder="Nomor induk siswa nasional (Wajib Di isi)" name="nisn" minlength="10" maxlength="10" required/>
@@ -375,7 +382,7 @@
 				{# <button type="button" class="btn btn-primary" style="width: 100px;">
 					CANCEL
 				</button> #}
-				<button type="submit" class="btn btn-main" style="width: 100px; margin-left: 10px;">
+				<button type="submit" class="btn btn-main" style="width: 120px; margin-left: 10px;">
 					SUBMIT 
 				</button>
 			</div>

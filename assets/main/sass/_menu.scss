@@ -58,6 +58,17 @@
             background-color: #fff;
             display: none;
             transition: 0.3s;
+            @media (max-width: $min-width) {
+                position: relative;
+                display: block;
+                box-shadow: 0 0 0 #fff;
+                width: 100%;
+                top: 0;
+                left: 0;
+                border-radius: 0;
+                z-index: 0;
+                padding: 0 10px;
+            }
         }
     }
 }

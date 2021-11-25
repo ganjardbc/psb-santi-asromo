@@ -5,15 +5,204 @@
     <div class="main-screen">
         <div class="self-padding" style="padding-bottom: 0;">
             <div class="space space-center">
-                <h2 class="fonts fonts-32px bold black no-line-height">Agenda PSB</h2>
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">Agenda PSB</h2>
+                <div class="width width-90 width-center">
+                    <p class="fonts fonts-16px grey">Agenda PSB / Schedule penerimaan santri baru <script>document.write(new Date().getFullYear())</script></p>
+                </div>
                 <div class="display-flex center">
                     <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
-                </div>
-                <div class="width width-90 width-center">
-                    <p class="fonts fonts-16px grey">Agenda PSB</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="medium-screen" style="margin-top: 50px;">
+        <div style="padding-left: 15px; padding-right: 15px;">
+            <div class="card full-rounded bg-white box-shadow" style="overflow: unset; margin-bottom: 30px;">
+                <div class="float-left-icon bg-main">
+                    <i class="fl-icn fa fa-lg fa-bullhorn" style="color: #fff;"></i>
+                </div>
+                {% for data in datas %}
+                    <div style="position: relative; padding: 15px; padding-top: 40px;">
+                        <div class="display-flex" style="margin-bottom: 10px;">
+                            <span class="fonts fonts-12 semibold black" style="margin-right: 5px;">Gelombang {{romawi(data.gelombang)}}</span>
+                            <span class="fonts fonts-12 semibold black">{{data.jenjang}}</span>
+                        </div>
+                        <div class="display-flex border-bottom" style="padding-bottom: 15px; padding-top: 15px;">
+                            <div class="width width-50 fonts fonts-11 black">Periode Pendaftaran</div>
+                            <div class="width width-50 fonts fonts-11 semibold black fonts-right">{{data.tanggal_pendaftaran_from | strftime('%d %B')}}<span style="margin: 0 3px;">-</span>{{data.tanggal_pendaftaran_to | strftime('%d %B %Y')}}</div>
+                        </div>
+                        <div class="display-flex border-bottom" style="padding-bottom: 15px; padding-top: 15px;">
+                            <div class="width width-50 fonts fonts-11 black">Seleksi & Wawancara</div>
+                            <div class="width width-50 fonts fonts-11 semibold black fonts-right">{{data.tanggal_ujian | strftime('%d %B %Y')}}</div>
+                        </div>
+                        <div class="display-flex border-bottom" style="padding-bottom: 15px; padding-top: 15px;">
+                            <div class="width width-50 fonts fonts-11 black">Pengumuman Kelulusan</div>
+                            <div class="width width-50 fonts fonts-11 semibold black fonts-right">{{data.tanggal_pengumuman | strftime('%d %B %Y')}}</div>
+                        </div>
+                        <div class="display-flex" style="padding-bottom: 0; padding-top: 15px;">
+                            <div class="width width-50 fonts fonts-11 black">Daftar Ulang</div>
+                            <div class="width width-50 fonts fonts-11 semibold black fonts-right">{{data.tanggal_daftar_ulang_from | strftime('%d %B')}}<span style="margin: 0 3px;">-</span>{{data.tanggal_daftar_ulang_to | strftime('%d %B %Y')}}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="card full-rounded border-full" style="margin-bottom: 30px;">
+                <div style="position: relative; padding: 15px; padding-top: 15px;">
+                    <div style="padding-bottom: 15px;">
+                        <div class="fonts fonts-12 black semibold" style="margin-bottom: 5px;">Keterangan</div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">1</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Pengumuman kelulusan diumumkan melalui website <a href="www.santiasromo.or.id" target="_blank">www.santiasromo.or.id</a> atau <a href="psbonlinesantiasromo.or.id" target="_blank">psbonlinesantiasromo.or.id</a> dan papan pengumuman resmi Ponpes Santi Asromo.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">2</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Santri baru yang telah dinyatakan <b>LULUS</b> & telah <b>DAFTAR ULANG</b> diharuskan <b>SUDAH BERADA</b> di <b>SANTI ASROMO</b> pada <b>10 Juli 2021</b> untuk mengikuti <b>KHUTBATUL IBTIDA</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">3</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Pekan <i>Ta'aruf</i> Santi Asromo (<b>PENTAS</b> : 11 -15 Juli 2021).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card full-rounded border-full" style="margin-bottom: 30px;">
+                <div style="position: relative; padding: 15px; padding-top: 15px;">
+                    <div style="padding-bottom: 15px;">
+                        <div class="fonts fonts-12 black semibold" style="margin-bottom: 5px;">Kelengkapan Pendaftaran</div>
+                        <div class="fonts fonts-11 black">Calon santri mendaftarkan diri ke sekretariat pendaftaran atau dapat melakukan pendaftaran online dengan :</div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">1</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Mengisi formulir pendaftaran di <a href="psbonlinesantiasromo.or.id" target="_blank">psbonlinesantiasromo.or.id</a>.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">2</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Membayar biaya pendaftaran sebesar Rp. 200.000.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">3</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Menyerahkan Pas foto 3 x 4 sebanyak 2 lembar.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">4</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Foto Copy Akta Kelahiran.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">5</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Foto Copy Kartu Keluarga.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card full-rounded border-full" style="margin-bottom: 30px;">
+                <div style="position: relative; padding: 15px; padding-top: 15px;">
+                    <div style="padding-bottom: 15px;">
+                        <div class="fonts fonts-12 black semibold" style="margin-bottom: 5px;">Materi Seleksi Terdiri dari</div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">1</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Tes Potensi Akademik (TPA), (Matematika, Bahasa Indonesia, Bahasa Inggris, IPA, IPS).</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">2</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Tes membaca dan menulis Al-Qur'an.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                        <div class="number small-number green">
+                            <div class="val">3</div>
+                        </div>
+                        <div class="info">
+                            <div style="padding: 0 15px;">
+                                <div class="fonts fonts-11 black">Wawancara dengan orangtua calon santri.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card full-rounded border-full" style="margin-bottom: 30px;">
+                <div style="position: relative; padding: 15px; padding-top: 15px;">
+                    <div>
+                        <div class="fonts fonts-12 black semibold" style="margin-bottom: 5px;">Sekretariat Pendaftaran dan Daftar Ulang</div>
+                        <div class="fonts fonts-11 black">Sekretariat PSB Pondok Mufidah Santi Asromo pada hari dan jam kerja <b>(Pukul 07.00 - 14.00, Jum'at Libur)</b>.</div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div> 
 </div>
 {% endblock content %}

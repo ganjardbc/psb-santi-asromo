@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Pendaftaran santri asromo online">
+  <meta name="author" content="Ganjar hadiatna">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{title}}</title>
   <link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/main/icons/fontawesome/css/all.min.css">
@@ -12,6 +13,18 @@
   <script src="{{base_url()}}/assets/js/proper.min.js"></script>
   <script src="{{base_url()}}/assets/js/moment.min.js"></script>
   <script src="{{base_url()}}/assets/js/sweetalert.js"></script>
+  <script>
+    jQuery(document).ready(function() {
+        $('#open-sidebar').click(() => {
+            console.log('open sidebar')
+            $('#main-navbar').attr('class', 'hc-info open')
+        });
+        $('#close-sidebar').click(() => {
+            console.log('close sidebar')
+            $('#main-navbar').attr('class', 'hc-info')
+        });
+    });
+  </script
 </head>
 <body>
   <div id="app">
@@ -23,24 +36,24 @@
                 </a>
             </div>
             <div class="hc-open">
-                <button class="btn btn-icon btn-white">
+                <button class="btn btn-icon btn-white" id="open-sidebar">
                     <i class="fa fa-lg fa-bars"></i>
                 </button>
             </div>
-            <div class="hc-info open">
+            <div class="hc-info" id="main-navbar">
                 <div class="display-flex display-mobile">
                     <div class="hc-menu-mobile">
                         <div class="display-flex space-between align-center">
                             <div class="fonts fonts-11 black semibold">
                                 Menu
                             </div>
-                            <button class="btn btn-icon btn-white">
+                            <button class="btn btn-icon btn-white" id="close-sidebar">
                                 <i class="fa fa-lg fa-times"></i>
                             </button>
                         </div>
                     </div>
                     <div class="hc-menu">
-                        <div class="hc-navigator display-flex" style="margin-right: 0;">
+                        <div class="hc-navigator display-flex display-mobile" style="margin-right: 0;">
                             <ul class="navbar">
                                 <li class="{{active == 'home' ? 'active' : ''}}">
                                     <a href="{{base_url()}}">
@@ -101,7 +114,7 @@
                                     </a>
                                 </li> #}
                             </ul>
-                            <div style="margin-left: 15px;">
+                            <div style="margin-left: 15px; margin-right: 15px;">
                                 <a href="{{base_url()}}/pendaftaran">
                                     <button class="btn btn-main">
                                         Daftar Sekarang
@@ -119,7 +132,7 @@
     </div> 
     <div id="footer">
         <div id="footer-content">
-            <div class="width width-30 width-mobile">
+            <div class="width width-30 width-mobile footer-center">
                 <img 
                     src="{{base_url()}}/img/logo2.png"
                     style="
@@ -138,13 +151,13 @@
                 <div class="fonts fonts-10 grey">This Site All Rights Reserved @2021</div>
                 <div class="fonts fonts-10 grey">Pondok Mufidah Santi Asromo Islamic Boarding School</div>
                 <div style="margin-bottom: 30px;">
-                    <span class="fonts fonts-10 grey">Developed by</span>
-                    <span class="fonts fonts-10 black smibold">Ganjar Hadiatna</span>
+                    <span class="fonts fonts-10 grey">Powered by</span>
+                    <span class="fonts fonts-10 black smibold">Finger Technology</span>
                 </div>
             </div>
 
-            <div class="width width-45 width-mobile display-flex space-between" style="margin-bottom: 30px;">
-                <div style="width: 50%;">
+            <div class="width width-45 width-mobile display-flex display-mobile space-between" style="margin-bottom: 30px;">
+                <div class="width width-50 width-mobile footer-center" style="margin-bottom: 15px;">
                     <div class="fonts fonts-13px grey" style="margin-bottom: 10px;">Lainnya</div>
                     <ul class="menu-list transparent">
                         <li class="ml-list">
@@ -155,7 +168,7 @@
                     </ul>
                 </div>
 
-                <div style="width: 50%;">
+                <div class="width width-50 width-mobile footer-center">
                     <div class="fonts fonts-13px grey" style="margin-bottom: 10px;">Kontak</div>
                     <ul class="menu-list transparent">
                         <li class="ml-list">
@@ -177,9 +190,9 @@
                 </div>
             </div>
 
-            <div class="width width-13 width-mobile">
+            <div class="width width-13 width-mobile footer-center">
                 <div class="fonts fonts-13px grey" style="margin-bottom: 15px;">Sosial Media</div>
-                <div class="display-flex" style="margin-bottom: 15px;">
+                <div class="display-flex mobile-center" style="margin-bottom: 15px;">
                     <a href="https://web.facebook.com/ganjarhadiatna.gh/" target="_blank" style="margin-right: 5px;">
                         <button class="btn btn-icon btn-small-radius btn-sekunder">
                             <i class="fab fa-lg fa-facebook"></i>

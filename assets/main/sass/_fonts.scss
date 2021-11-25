@@ -97,6 +97,9 @@
     &.fonts-right {
         text-align: right;
     }
+    &.fonts-justify {
+        text-align: justify;
+    }
     @for $var from 0 to 1000 {
         &.fonts-#{$var} {
             font-size: #{$var} + 'pt';

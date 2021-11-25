@@ -4,6 +4,9 @@
     padding: 20px;
     border-radius: 8px;
     overflow: hidden;
+    &.no-overflow {
+        overflow: unset;
+    }
     &.full-rounded {
         border-radius: 15px;
     }
@@ -53,8 +56,31 @@
         box-shadow: $shadow;
         .fl-icn {
             @include post_center(absolute);
-            font-size: 26px;
-            color: $grey;
+            font-size: 22px;
+            color: $black;
+        }
+        .fl-val {
+            @include post_center(absolute);
+            font-size: 11px;
+            color: $black;
+        }
+        .fl-main-color {
+            color: $main-color;
+        }
+    }
+    .float-left-value {
+        position: absolute;
+        top: -30px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background-color: $main-color;
+        box-shadow: $shadow;
+        .fl-val {
+            @include post_center(absolute);
+            font-size: 12px;
+            color: #fff;
         }
     }
 }

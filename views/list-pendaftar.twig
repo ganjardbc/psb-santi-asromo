@@ -5,7 +5,7 @@
     <div class="main-screen">
         <div class="self-padding" style="padding-bottom: 0;">
             <div class="space space-center">
-                <h2 class="fonts fonts-32px bold black no-line-height">List Pendaftar</h2>
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">List Pendaftar</h2>
                 <div class="width width-100 width-center">
                     <p class="fonts fonts-16px grey">Berikut calon santri yang sudah mendaftar di Santi Asromo</p>
                 </div>
@@ -32,9 +32,9 @@
                         <tr>
                             <th class="small-col">#</th>
                             <th>Nama</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Jenjang</th>
-                            <th>Status</th>
+                            <th class="mobile-hidden">Jenis Kelamin</th>
+                            <th class="mobile-hidden">Jenjang</th>
+                            <th class="mobile-hidden">Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,12 +43,12 @@
                         <tr>
                             <td class="small-col">{{loop.index+skip}}</td>
                             <td>{{data.nama}}</td>
-                            <td>{{data.jenis_kelamin}}</td>
-                            <td>{{data.jenjang}}</td>
+                            <td class="mobile-hidden">{{data.jenis_kelamin}}</td>
+                            <td class="mobile-hidden">{{data.jenjang}}</td>
                             {% if (data.status == 'VERIFIED') %}
-                                <td class="fonts fonts-11 green">{{data.status}}</td>
+                                <td class="fonts fonts-11 green mobile-hidden">{{data.status}}</td>
                             {% else %}
-                                <td class="fonts fonts-11 red">{{data.status}}</td>
+                                <td class="fonts fonts-11 red mobile-hidden">{{data.status}}</td>
                             {% endif %}
                             <td>
                                 <a href="{{base_url()}}/list-pendaftar-detail/{{data.id}}" class="btn btn-small btn-main" style="width: 50px;">Detail</a>
