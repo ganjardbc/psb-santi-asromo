@@ -335,7 +335,8 @@ jQuery(document).ready(function() {
 
 	$("#take_foto").click(function () {
 		console.log('test');
-	$("#modal_take").modal("show");
+		// $("#modal_take").modal("show");
+		$("#modal_take").show();
 		if(window.innerHeight < window.innerWidth){
 			Webcam.set({
 			  width: 320,
@@ -360,7 +361,7 @@ jQuery(document).ready(function() {
 	});
 
 	$("#close_take_modal").click(function () {
-		$("#modal_take").modal("hide");
+		$("#modal_take").hide();
 		Webcam.reset();
 		
 	});
@@ -418,7 +419,7 @@ jQuery(document).ready(function() {
 				    _files = file;
 				});
 				$("#image").attr("src", resp);
-				$("#modal_take").modal("hide");
+				$("#modal_take").hide();
 			});
 		}else{
 			Webcam.reset();
@@ -426,7 +427,7 @@ jQuery(document).ready(function() {
 			    _files = file;
 			});
 			$("#image").attr("src", data_uri_image);
-			$("#modal_take").modal("hide");
+			$("#modal_take").hide();
 		}
 		
 

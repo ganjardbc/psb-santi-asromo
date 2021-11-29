@@ -16,15 +16,21 @@
   <script>
     jQuery(document).ready(function() {
         $('#open-sidebar').click(() => {
-            console.log('open sidebar')
             $('#main-navbar').attr('class', 'hc-info open')
         });
         $('#close-sidebar').click(() => {
-            console.log('close sidebar')
             $('#main-navbar').attr('class', 'hc-info')
         });
+        $('#open-panduan-pendaftaran').click(() => {
+            $('#panduan-pendaftaran').fadeIn();
+            document.body.style.overflowY = 'hidden';
+        });
+        $('#close-panduan-pendaftaran').click(() => {
+            $('#panduan-pendaftaran').fadeOut();
+            document.body.style.overflowY = 'auto';
+        });
     });
-  </script
+  </script>
 </head>
 <body>
   <div id="app">
@@ -65,15 +71,25 @@
                                         Selayang Pandang
                                     </a>
                                 </li>
-                                <li class="{{active == 'agenda' ? 'active' : ''}}">
+                                {# <li class="{{active == 'agenda' ? 'active' : ''}}">
                                     <a href="{{base_url()}}/agenda-psb">
                                         Agenda PSB
                                     </a>
-                                </li>
+                                </li> #}
                                 <li class="{{active == 'biaya' ? 'active' : ''}}">
                                     <a href="{{base_url()}}/biaya-pendidikan">
                                         Biaya Pendidikan
                                     </a>
+                                </li>
+                                {# <li class="{{active == 'panduan' ? 'active' : ''}}">
+                                    <a href="{{base_url()}}/panduan">
+                                        Panduan Pendaftaran
+                                    </a>
+                                </li> #}
+                                <li id="open-panduan-pendaftaran">
+                                    <div>
+                                        Panduan Pendaftaran
+                                    </div>
                                 </li>
                                 <li>
                                     <div>
@@ -81,14 +97,14 @@
                                         <i class="icn fa fa-lw fa-caret-down"></i>
                                     </div>
                                     <ul>
+                                        <li class="{{active == 'agenda' ? 'active' : ''}}">
+                                            <a href="{{base_url()}}/agenda-psb">
+                                                Agenda PSB
+                                            </a>
+                                        </li>
                                         <li class="{{active == 'persyaratan' ? 'active' : ''}}">
                                             <a href="{{base_url()}}/persyaratan">
                                                 Persyaratan Pendaftaran 
-                                            </a>
-                                        </li>
-                                        <li class="{{active == 'panduan' ? 'active' : ''}}">
-                                            <a href="{{base_url()}}/panduan">
-                                                Panduan Pendaftaran
                                             </a>
                                         </li>
                                         <li class="{{active == 'list-pendaftar' ? 'active' : ''}}">
@@ -172,20 +188,20 @@
                     <div class="fonts fonts-13px grey" style="margin-bottom: 10px;">Kontak</div>
                     <ul class="menu-list transparent">
                         <li class="ml-list">
-                            <a href="tel:+62 8532 1343 674" class="ml-link">
-                                +62 8532 1343 674
+                            <a href="tel:+62 8131 2779 494" class="ml-link">
+                                +62 8131 2779 494
                             </a>
                         </li>
                         <li class="ml-list">
-                            <a href="tel:+62 8988 7492 15" class="ml-link">
-                                +62 8988 7492 15
+                            <a href="tel:+62 8131 0134 141" class="ml-link">
+                                +62 8131 0134 141
                             </a>
                         </li>
-                        <li class="ml-list">
+                        {# <li class="ml-list">
                             <a href="mailto:admin@psbsantiasromo.com" class="ml-link">
                                 admin@psbsantiasromo.com
                             </a>
-                        </li>
+                        </li> #}
                     </ul>
                 </div>
             </div>
@@ -193,25 +209,200 @@
             <div class="width width-13 width-mobile footer-center">
                 <div class="fonts fonts-13px grey" style="margin-bottom: 15px;">Sosial Media</div>
                 <div class="display-flex mobile-center" style="margin-bottom: 15px;">
-                    <a href="https://web.facebook.com/ganjarhadiatna.gh/" target="_blank" style="margin-right: 5px;">
+                    <a href="https://instagram.com/ponpes_santiasromo" target="_blank" style="margin-right: 5px;">
                         <button class="btn btn-icon btn-small-radius btn-sekunder">
                             <i class="fab fa-lg fa-facebook"></i>
                         </button>
                     </a>
-                    <a href="https://www.instagram.com/ganjar_hadiatna/" target="_blank" style="margin-right: 5px;">
+                    <a href="https://www.facebook.com/PondokMufidahSantiAsromo/" target="_blank" style="margin-right: 5px;">
                         <button class="btn btn-icon btn-small-radius btn-sekunder">
                             <i class="fab fa-lg fa-instagram"></i>
                         </button>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=+62-8969-9181-669" target="_blank">
+                    <a href="https://www.santiasromo.or.id" target="_blank">
                         <button class="btn btn-icon btn-small-radius btn-sekunder">
-                            <i class="fab fa-lg fa-whatsapp"></i>
+                            <i class="fa fa-lg fa-globe"></i>
                         </button>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="display-popup" style="display: none;" id="panduan-pendaftaran">
+        <div class="medium-screen">
+            <div class="card box-shadow bg-white full-rounded" style="margin-top: 30px; margin-bottom: 30px;">
+                <div class="display-flex align-right">
+                    <button class="btn btn-icon btn-white" id="close-panduan-pendaftaran">
+                        <i class="fa fa-lg fa-times"></i>
+                    </button>
+                </div>
+                <div class="display-flex space-between align-center display-mobile border-bottom" style="padding-bottom: 20px; margin-top: 15px; margin-bottom: 15px;">
+                    <div class="width width-50 width-mobile" style="padding-top: 30px; padding-bottom: 30px;">
+                        <img src="https://www.nurulfikri.co/bimbel/wp-content/uploads/2020/11/daftar-online-01.png" style="width: 100%;" />
+                    </div>
+                    <div class="width width-45 width-mobile">
+                        <h2 class="fonts fonts-20 bold black no-line-height">Panduan Pendaftaran</h2>
+                        <div class="display-flex">
+                            <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                        </div>
+                        <div class="width width-100 width-center">
+                            <p class="fonts fonts-10 grey">Berikut panduan alur pendaftaran online Santi Asromo</p>
+                        </div>
+
+                        <div style="padding-top: 30px;">
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">1</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Pastikan anda sudah mempersiapkan persyaratan untuk pendaftaran. (NISN, NIK Nomor Induk Keluarga, File foto calon santri, Alamat, Nomor HP orangtua yang tersambung ke whatsapp).
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">2</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Klik tautan MULAI PENDAFTARAN di menu PENDAFTARAN PSB ONLINE SANTI ASROMO.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">3</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Isi form pendaftaran dengan lengkap, teliti dan hati-hati pada HALAMAN FORMULIR PENDAFTARAN.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">4</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Jika sudah selesai di isi, tekan tombol SUBMIT.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">5</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Secepatnya ditransferkan biaya pendaftaran.
+                                        </div>
+                                        <div class="fonts fonts-10 black semibold">
+                                            (Jumlah transfer harus sesuai dengan yang tertera setelah klik SUBMIT).
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">6</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-11 black regular">
+                                            Kirim bukti transfer via WA ke salah satu nomor berikut:
+                                        </div>
+                                        <div class="fonts fonts-11 black regular">
+                                            - +62 8131 2779 494 (Ust Ahmad Ubaidillah)
+                                        </div>
+                                        <div class="fonts fonts-11 black regular">
+                                            - +62 8131 0134 141 (Ustadzah Desi Susilawati)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">7</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Setelah konfirmasi, tunggu pemberitahuan VIA WA atau SMS bahwa transfer telah sukses.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">8</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Silahkan Cetak KARTU TES di tautan CETAK KARTU di menu PENDAFTARAN PSB ONLINE. pilih nama calon peserta tes dan Cetak kartu tes yang muncul.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val">9</div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-10 black">
+                                            Silahkan mengklik tautan dibawah ini untuk mulai pendaftaran
+                                        </div>
+                                        <div class="display-flex" style="margin-top: 10px;">
+                                            <a href="{{base_url()}}/pendaftaran" class="btn btn-main" style="margin-left: 0; margin-right: 10px;">
+                                                Daftar Sekarang
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; margin-bottom: 20px;">
+                    <div class="width width-full width-mobile">
+                        <div class="card box-shadow bg-grey" style="overflow: unset;">
+                            <div class="fonts fonts-10 black semibold" style="margin-top: 0; margin-bottom: 10px;">
+                                Pembayaran dapat dilakukan melalui transafer ke rekening Mandiri Syariah (Kode Bank: 451)
+                            </div>
+                            <div class="display-flex width width-60 width-mobile">
+                                <div class="width width-30 fonts fonts-10 black">No.Rek</div>
+                                <div class="width width-2 fonts fonts-10 black">:</div>
+                                <div class="width width-68 fonts fonts-10 semibold black">6000 1932 06</div>
+                            </div>
+                            <div class="display-flex width width-60 width-mobile">
+                                <div class="width width-30 fonts fonts-10 black">Atas Nama</div>
+                                <div class="width width-2 fonts fonts-10 black">:</div>
+                                <div class="width width-68 fonts fonts-10 semibold black">PONDOK MUFIDAH SANTI ASROMO</div>
+                            </div>
+                            <div class="fonts fonts-10 black regular" style="margin-top: 10px;">
+                                Atau bisa membayar langsung ke bagian keuangan sekretariat PONDOK MUFIDAH SANTI ASROMO.
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>    
+
   </div>
 </body>
 

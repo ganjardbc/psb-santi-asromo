@@ -9,6 +9,8 @@
 	}
 	#my_camera{
 	 	display: inline-block;
+		width: 300px;
+		height: 300px;
 	}
 	#outer {
 	  width: 100%;
@@ -38,33 +40,36 @@
 <script type="text/javascript" src="{{base_url()}}/assets/crop/croppie.min.js"></script>
 <script type="text/javascript" src="{{base_url()}}/assets/js/pendaftaran.js?v=4"></script>
 
-{# <div class="modal" id="modal_take">
-	<div class="modal-dialog">
+<div class="display-popup" id="modal_take" style="display: none;">
+	<div class="card box-shadow full-rounded bg-white post-center" style="width: 340px; margin: auto;">
 		<div class="modal-content">
 
 			<!-- Modal Header -->
-			<div class="modal-header">
+			<div class="display-flex align-center space-between">
 				<h4 class="modal-title">Take Photo</h4>
-				<button type="button" class="close" id="close_take_modal">&times;</button>
+				<button type="button" class="btn btn-icon btn-white" id="close_take_modal">
+					<i class="fa fa-lw fa-times"></i>
+				</button>
 			</div>
 			
 			<!-- Modal body -->
 			<div class="modal-body" id="outer">
-		        <div id="my_camera"></div>
-		        <img id="image_prev" hidden alt="">
-		        <br>
+				<div style="margin-top: 15px; margin-bottom: 15px;">
+					<div id="my_camera"></div>
+					<img id="image_prev" hidden alt="">
+				</div>
 		        <div id="snap_foto_div">
-		        	<button id="snap_foto" type="button" class="btn btn-primary btn-block">Take</button>
+		        	<button id="snap_foto" type="button" class="btn btn-main btn-full">Take</button>
 		        </div>
-		        <div id="snap_ok_div" class="row">
-		        	<button id="snap_ok" type="button" class="btn btn-success col-md-6">Ok</button>
-		        	<button id="snap_again" type="button" class="btn btn-danger col-md-6">Cancel</button>
+		        <div id="snap_ok_div" class="row" style="display: show;">
+		        	<button id="snap_ok" type="button" class="btn btn-main btn-full">Ok</button>
+		        	<button id="snap_again" type="button" class="btn btn-primary btn-full">Cancel</button>
 		        </div>
 		    </div>
 
 		</div>
 	</div>
-</div> #}
+</div>
 
 <div class="display-popups bg-white">
 	<div class="medium-screen">
@@ -93,6 +98,7 @@
 						    <option disabled selected hidden value="">---Pilih jenjang pendidikan---</option>
 							{#<option value="SMP">SMP</option>#}
 							<option value="SMA">SMA</option>
+							<option value="MTS">MTS</option>
 						</select>
 					</div>
 				</div>
@@ -123,13 +129,13 @@
 								Browse Foto
 								<input style="width:150px;display:none" id="file" name="file" accept=".jpg,.png" type="file"/>
 							</label>
-							{# <button type="button" id="take_foto" style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button>  #}
+							<button type="button" id="take_foto" style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button> 
 							<br>
     						<span class="fonts fonts-10 center error"><i>Limit size (500 KB)</i></span>
     						<input type="text" id="filename" name="filename" hidden/>
 					    {% else %}
 					        <button type="button" disabled style="margin-bottom: 0px" class="btn btn-main btn-full">Browse Foto</button>
-    						{# <button type="button" disabled style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button> #}
+    						<button type="button" disabled style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button>
 							<br>
     						<span class="fonts fonts-10 center error"><i>Limit size (500 KB)</i></span>
 					    {% endif %}

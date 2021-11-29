@@ -34,9 +34,19 @@ class HomeController {
 		    // 	"active" => "home"
 		    // ));
 			$benefit = [
-				['image' => 'img/persyaratan.png', 'title' => 'Konsultasi Jurusan Gratis', 'desc' => 'Sebanyak apapun konsultasi belajar dan jurusan tidak ada tambahan biaya.', 'route' => '/'],
-				['image' => 'img/panduan2.png', 'title' => 'Pembelajaran Online', 'desc' => 'Fasilitas belajar online di aplikasi belajar NF dan video pembelajaran di portal SIP dan Aplikasi Skolla', 'route' => '/'],
-				['image' => 'img/reg.png', 'title' => 'Peluang Beasiswa', 'desc' => 'Ditawarkan pada 100 siswa peringkat teratas yang memenuhi persyaratan', 'route' => '/'],
+				['image' => 'img/persyaratan.png', 'title' => 'Ruhiyah (Bener)', 'desc' => [
+					['desc' => 'Beraqidah Ahlusunnah wal jamaah'],
+					['desc' => 'Keimanan yang kokoh'],
+					['desc' => 'Menjalankan Ibadah sesuai dengan syariat'],
+				]],
+				['image' => 'img/panduan2.png', 'title' => 'Aqliyah (Pinter)', 'desc' => [
+					['desc' => 'Memiliki keluasan Ilmu Pengetahuan'],
+					['desc' => 'Memiliki kepakaan sosial dan sikap tasammuh'],
+				]],
+				['image' => 'img/reg.png', 'title' => 'Jasadiyah (Perigel)', 'desc' => [
+					['desc' => 'Memiliki Kemuliaan Akhlaq'],
+					['desc' => 'Memiliki Kemampuan Leadership Entreperunership dan Mandiri'],
+				]],
 			];
 			return $this->view->render($response, "/home.twig", array(
 		    	"title" => "Pendaftaran Santri Asromo Online",

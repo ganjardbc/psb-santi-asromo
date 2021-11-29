@@ -95,7 +95,7 @@
                     </div>
                     <div class="info">
                         <div style="padding: 0 15px;">
-                            <div class="fonts fonts-11 black">+62 8532 1343 674 (Ust Ahmad Ubaidillah)</div>
+                            <div class="fonts fonts-11 black">+62 8131 2779 494 (Ust Ahmad Ubaidillah)</div>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="info">
                         <div style="padding: 0 15px;">
-                            <div class="fonts fonts-11 black">+62 8988 7492 15 (Ustadzah Desi Susilawati)</div>
+                            <div class="fonts fonts-11 black">+62 8131 0134 141 (Ustadzah Desi Susilawati)</div>
                         </div>
                     </div>
                 </div>
@@ -147,13 +147,136 @@
                                     </div>
                                 </div>
                                 <div class="fonts fonts-14 black semibold fonts-center" style="margin-bottom: 10px;">{{ dt.title }}</div>
-                                <div class="fonts fonts-11 grey fonts-center" style="margin-bottom: 30px;">{{ dt.desc }}</div>
+                                {% for sb in dt.desc %}
+                                    <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                        <div class="number small-number green">
+                                            <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                        </div>
+                                        <div class="info">
+                                            <div style="padding: 0 15px;">
+                                                <div class="fonts fonts-12 black regular">{{ sb.desc }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div> 
                 </div>
             {% endfor %}
         </div> 
+    </div>
+
+    <div class="main-screen" style="margin-top: 100px; margin-bottom: 100px;">
+        <div class="self-padding" style="padding-bottom: 0;">
+            <div class="space space-center">
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">VISI & MISI</h2>
+                <div class="width width-90 width-center">
+                    <p class="fonts fonts-16px grey">Berikut VISI dan MISI dari Santi Asromo</p>
+                </div>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="width width-full display-flex display-mobile">
+
+            <div class="width width-row-2">
+                <div style="padding: 15px;">
+                    <div class="card box-shadow full-rounded bg-white">
+                        <div style="position: relative; padding: 15px;">
+                            <div class="fonts fonts-26 black semibold fonts-center">VISI</div>
+                            <div class="display-flex column center align-center" style="height: 282px;">
+                                <div class="fonts fonts-20 black regular fonts-center">
+                                    Menjadikan Santi Asromo sebagai institusi yang memiliki keunggulan dalam mewujudkan “santri lucu”
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="width width-row-2">
+                <div style="padding: 15px;">
+                    <div class="card box-shadow full-rounded bg-white">
+                        <div style="position: relative; padding: 15px;">
+                            <div class="fonts fonts-26 black semibold fonts-center">MISI</div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Mewujudkan Aqidah Ahlusunnah wal jamaah</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Mewujudkan keimanan yang kokoh</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Menjalankan Ibadah sesuai dengan syariat</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Keluasan Ilmu Pengetahuan</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Memiliki kepakaan sosial dan sikap tasammuh</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Membiasakan dan melaksanakan kemuliaan akhlaq</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+                                <div class="number small-number green">
+                                    <div class="val"><i class="fa fa-lw fa-check"></i></div>
+                                </div>
+                                <div class="info">
+                                    <div style="padding: 0 15px;">
+                                        <div class="fonts fonts-12 black regular">Mengembangkan kemampuan Leadership Entreperunership dan kemandirian</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
     </div>
 
 </div>
