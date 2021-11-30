@@ -121,6 +121,7 @@ jQuery(document).ready(function() {
 	$('#provinsi,#kabupaten,#kecamatan,#kelurahan,#provinsi_ortu,#kabupaten_ortu,#kecamatan_ortu,#kelurahan_ortu').select2({
 		theme: "bootstrap4"
 	});
+
 	$.getJSON("wil/provinsi", function(response) {
 		$('#provinsi').empty();
 		$('#provinsi').append('<option disabled selected hidden value="">---Pilih provinsi---</option>');
@@ -144,9 +145,12 @@ jQuery(document).ready(function() {
 		 	$('#provinsi_ortu').append('<option value="'+data.id_prov+'">'+data.nama+'</option>');
 		};
 	});
+
 	$("#provinsi").change(function() {
 		$("input[name=provinsi]").val($("#provinsi option:selected").text());
-		$.getJSON("wil/kabupaten/"+$('#provinsi').val(), function(response) {
+		var jenjang = $('#jenjang').val();
+		var url = jenjang === 'MTS' ? "wil/kabupaten/by_id/3210" : "wil/kabupaten/"+$('#provinsi').val()
+		$.getJSON(url, function(response) {
 			$('#kabupaten').empty();
 			$('#kabupaten').append('<option disabled selected hidden value="">---Pilih kabupaten---</option>');
 			$('#kecamatan').append('<option disabled selected hidden value="">---Pilih kecamatan---</option>');
@@ -161,31 +165,75 @@ jQuery(document).ready(function() {
 		});
 	});
 
+	/* 
+		this is need to refactor for case jenjang MTS
+	*/
 	$("#kabupaten").change(function() {
 		$("input[name=kabupaten]").val($("#kabupaten option:selected").text());
+		var jenjang = $('#jenjang').val();
 		$.getJSON("wil/kecamatan/"+$('#kabupaten').val(), function(response) {
 			$('#kecamatan').empty();
 			$('#kecamatan').append('<option disabled selected hidden value="">---Pilih kecamatan---</option>');
 			$('#kelurahan').append('<option disabled selected hidden value="">---Pilih kelurahan---</option>');
 			disable_wil("#kecamatan",false);
 			disable_wil("#kelurahan",true);
-			for (var i = 0; i < response.length; i++) {
-			 	var data = response[i];
-			 	$('#kecamatan').append('<option value="'+data.id_kec+'">'+data.nama+'</option>');
-			};
+			if (jenjang === 'MTS') {
+				for (var i = 0; i < response.length; i++) {
+					var data = response[i];
+					if (
+						data.id_kec === '321025' || 
+						data.id_kec === '321006' || 
+						data.id_kec === '321008' || 
+						data.id_kec === '321005' || 
+						data.id_kec === '321009'
+					) {
+						$('#kecamatan').append('<option value="'+data.id_kec+'">'+data.nama+'</option>');
+					}
+				};
+			} else {
+				for (var i = 0; i < response.length; i++) {
+					var data = response[i];
+					$('#kecamatan').append('<option value="'+data.id_kec+'">'+data.nama+'</option>');
+				};
+			}
 		});
 	});
 
+	/* 
+		this is need to refactor for case jenjang MTS
+	*/
 	$("#kecamatan").change(function() {
 		$("input[name=kecamatan]").val($("#kecamatan option:selected").text());
+		var jenjang = $('#jenjang').val();
 		$.getJSON("wil/kelurahan/"+$('#kecamatan').val(), function(response) {
 			$('#kelurahan').empty();
 			$('#kelurahan').append('<option disabled selected hidden value="">---Pilih kelurahan---</option>');
 			disable_wil("#kelurahan",false);
-			for (var i = 0; i < response.length; i++) {
-			 	var data = response[i];
-			 	$('#kelurahan').append('<option value="'+data.id_kel+'">'+data.nama+'</option>');
-			};
+			if (jenjang === 'MTS') {
+				for (var i = 0; i < response.length; i++) {
+					var data = response[i];
+					if (data.id_kec === '321025') {
+						$('#kelurahan').append('<option value="'+data.id_kel+'">'+data.nama+'</option>');
+					} else {
+						if (
+							data.id_kel === '3210062016' || 
+							data.id_kel === '3210062015' || 
+							data.id_kel === '3210082001' ||
+							data.id_kel === '3210082002' ||
+							data.id_kel === '3210082019' ||
+							data.id_kel === '3210052011' ||
+							data.id_kel === '3210092001'
+						) {
+							$('#kelurahan').append('<option value="'+data.id_kel+'">'+data.nama+'</option>');
+						}
+					}
+				};
+			} else {
+				for (var i = 0; i < response.length; i++) {
+					var data = response[i];
+					$('#kelurahan').append('<option value="'+data.id_kel+'">'+data.nama+'</option>');
+				};
+			}
 		});
 	});
 
@@ -322,6 +370,24 @@ jQuery(document).ready(function() {
 		};
 	}
 
+	function display_get_province(provinceID = ''){
+		const url = provinceID ? "wil/provinsi/" + provinceID : "wil/provinsi";
+		$.getJSON(url, function(response) {
+			$('#provinsi').empty();
+			$('#provinsi').append('<option disabled selected hidden value="">---Pilih provinsi---</option>');
+			$('#kabupaten').append('<option disabled selected hidden value="">---Pilih kabupaten---</option>');
+			$('#kecamatan').append('<option disabled selected hidden value="">---Pilih kecamatan---</option>');
+			$('#kelurahan').append('<option disabled selected hidden value="">---Pilih kelurahan---</option>');
+			disable_wil("#kabupaten",true);
+			disable_wil("#kecamatan",true);
+			disable_wil("#kelurahan",true);
+			for (var i = 0; i < response.length; i++) {
+				var data = response[i];
+				$('#provinsi').append('<option value="'+data.id_prov+'">'+data.nama+'</option>');
+			};
+		});
+	}
+
 	$("#jenjang").change(function() {
 	    var value = $(this).val();
 	    jenjang = value;
@@ -330,12 +396,17 @@ jQuery(document).ready(function() {
     	}else{
     		display_asal_sekolah(asal_sma);
     	}
+
+		if (jenjang === 'MTS') {
+			var provinceID = '32';
+			display_get_province(provinceID)
+		} else {
+			display_get_province()
+		}
 	    
 	});
 
 	$("#take_foto").click(function () {
-		console.log('test');
-		// $("#modal_take").modal("show");
 		$("#modal_take").show();
 		if(window.innerHeight < window.innerWidth){
 			Webcam.set({

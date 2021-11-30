@@ -11,28 +11,21 @@ class HomeController {
    	}
 
    	public function index($request, $response, $args){
+		setlocale(LC_ALL, 'IND');
+		
 		try {
 			$common  = new common();
-            /*if ($common->date_diff()) {
+			$tanggal_pembukaan = '';
+            if ($common->date_diff()) {
             	$data_common = $common->countdown($this->db);
             	if ($data_common['diff_date_from'] > 1) {
-	            	return $this->view->render($response, "/comingsoon.twig", array(
-				    	"title" => "Pendaftaran Santri Asromo Online",
-				    	"tanggal_pembukaan" => $data_common['date_from']
-				    ));
+	            	$tanggal_pembukaan = $data_common['date_from'];
 	            }
 	            if ($data_common['diff_date_to'] <= 1) {
-	            	return $this->view->render($response, "/penutupan.twig", array(
-				    	"title" => "Pendaftaran Santri Asromo Online",
-				    	"tanggal_penutupan" => $data_common['date_to']
-				    ));
+					$tanggal_pembukaan = '';
 	            }
-            }*/
+            }
             
-			// return $this->view->render($response, "/home.twig", array(
-		    // 	"title" => "Pendaftaran Santri Asromo Online",
-		    // 	"active" => "home"
-		    // ));
 			$benefit = [
 				['image' => 'img/persyaratan.png', 'title' => 'Ruhiyah (Bener)', 'desc' => [
 					['desc' => 'Beraqidah Ahlusunnah wal jamaah'],
@@ -52,6 +45,7 @@ class HomeController {
 		    	"title" => "Pendaftaran Santri Asromo Online",
 		    	"active" => "home",
 				"benefit" => $benefit,
+				"tanggal_pembukaan" => $tanggal_pembukaan,
 		    ));
 		} catch (Exception $e) {
 			echo $e;

@@ -1,27 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>{{title}}</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "layout.twig" %}
 
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/css/util.css">
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/css/main.css">
-<!--===============================================================================================-->
-</head>
-<body>
-	
-	
-	<div class="bg-img1 size1 overlay1">
+{% block content %}
+<div>	
+	<div class="small-screen" style="margin-top: 100px; margin-bottom: 100px;">
+        <div class="self-padding" style="padding-bottom: 0;">
+            <div class="space space-center">
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">Tanggal Pembukaan</h2>
+                <div class="width width-90 width-center">
+                    <p class="fonts fonts-16px grey">PSB Online Santi Asromo akan dibuka pada <br><span class="fonts fonts-16px grey semibold">{{tanggal_pembukaan | strftime('%A, %d %B %Y')}}</span></p>
+                </div>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="display-flex space-between cd100">
+            <div style="padding: 15px; width: calc(100% - 30px);">
+				<div class="card box-shadow content-center">
+					<div class="fonts fonts-32 black semibold center days" style="margin-bottom: 5px;"></div>
+					<div class="fonts fonts-11 center black regular">Hari</div>
+				</div>
+            </div>
+
+            <div style="padding: 15px; width: calc(100% - 30px);">
+				<div class="card box-shadow content-center">
+					<div class="fonts fonts-32 black semibold center hours" style="margin-bottom: 5px;"></div>
+					<div class="fonts fonts-11 center black regular">Jam</div>
+				</div>
+            </div>
+
+            <div style="padding: 15px; width: calc(100% - 30px);">
+				<div class="card box-shadow content-center">
+					<div class="fonts fonts-32 black semibold center minutes" style="margin-bottom: 5px;"></div>
+					<div class="fonts fonts-11 center black regular">Menit</div>
+				</div>
+            </div>
+
+            <div style="padding: 15px; width: calc(100% - 30px);">
+				<div class="card box-shadow content-center">
+					<div class="fonts fonts-32 black semibold center seconds" style="margin-bottom: 5px;"></div>
+					<div class="fonts fonts-11 center black regular">Detik</div>
+				</div>
+			</div>
+        </div>
+        <div class="display-flex center" style="padding-top: 30px;">
+            <a href="{{base_url()}}/brosur/BROSUR_ASROMO_1.pdf" target="_blank">
+                <button class="btn btn-sekunder">
+                    <i class="icn icn-left fa fa-lw fa-file"></i>
+                    Download Brosur Terbaru
+                </button>
+            </a>
+        </div>
+    </div>
+	{# <div class="bg-img1 size1 overlay1">
 		<div class="size1 p-l-15 p-r-15 p-t-30 p-b-50">
 			<br>
 			<br>
@@ -58,20 +89,8 @@
 			    <a class="btn btn-lg btn-success" href="{{base_url()}}/brosur/BROSUR_ASROMO.pdf" target="_blank">DOWNLOAD BROSUR</a>
 			</div>
 		</div>
-	</div>
-
-
-
+	</div> #}
 	
-
-<!--===============================================================================================-->	
-	<script src="{{base_url()}}/assets/comingsoon/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="{{base_url()}}/assets/comingsoon/vendor/bootstrap/js/popper.js"></script>
-	<script src="{{base_url()}}/assets/comingsoon/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="{{base_url()}}/assets/comingsoon/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
 	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment.min.js"></script>
 	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment-timezone.min.js"></script>
 	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment-timezone-with-data.min.js"></script>
@@ -88,15 +107,6 @@
 			endtimeSeconds: 00
 		});
 	</script>
-<!--===============================================================================================-->
-	<script src="{{base_url()}}/assets/comingsoon/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="{{base_url()}}/assets/comingsoon/js/main.js"></script>
 
-</body>
-</html>
+</div>
+{% endblock content %}

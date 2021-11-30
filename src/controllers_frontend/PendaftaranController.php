@@ -154,10 +154,10 @@ class PendaftaranController {
         	
 			// $name_photo = preg_replace('/\s+/', '_', $input["nama"])."_".$now_date->getTimestamp();
 			// $target_dir = "img/upload/";
-		 //    $ext = strtolower(substr(strrchr(basename($_FILES["file"]["name"]), '.'), 1));
-		 //    $target_file = $target_dir.$name_photo.'.'.$ext;
-		 //    $filename = $name_photo.'.'.$ext;
-		 //    move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+		    // $ext = strtolower(substr(strrchr(basename($_FILES["file"]["name"]), '.'), 1));
+		    // $target_file = $target_dir.$name_photo.'.'.$ext;
+		    // $filename = $name_photo.'.'.$ext;
+		    // move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
 		    
 		    //form input
 		    $kode_pendaftaran = "PSB-SA-".$now_date->getTimestamp();

@@ -9,15 +9,16 @@
 	}
 	#my_camera{
 	 	display: inline-block;
-		width: 300px;
-		height: 300px;
 	}
 	#outer {
 	  width: 100%;
 	  text-align: center;
 	}
 	.div-img-container{
-	    height:200px;width:150px;position:relative;overflow: hidden;
+	    height:200px;
+		width:150px;
+		position:relative;
+		overflow: hidden;
 	}
 
 	.div-img{
@@ -96,7 +97,7 @@
 					<div class="width width-70">
 						<select id="jenjang" name="jenjang" class="slc slc-sekunder" required>
 						    <option disabled selected hidden value="">---Pilih jenjang pendidikan---</option>
-							{#<option value="SMP">SMP</option>#}
+							<option value="SMP">SMP</option>
 							<option value="SMA">SMA</option>
 							<option value="MTS">MTS</option>
 						</select>
@@ -127,7 +128,7 @@
 			          	{% if status_button == '1' %}
 						  	<label style="margin-bottom: 0px" class="btn btn-main">
 								Browse Foto
-								<input style="width:150px;display:none" id="file" name="file" accept=".jpg,.png" type="file"/>
+								<input id="file" name="file" accept=".jpg,.png" type="file" hidden />
 							</label>
 							<button type="button" id="take_foto" style="margin-top: 10px" class="btn btn-sekunder btn-full">Ambil Foto</button> 
 							<br>
@@ -388,7 +389,7 @@
 				{# <button type="button" class="btn btn-primary" style="width: 100px;">
 					CANCEL
 				</button> #}
-				<button type="submit" class="btn btn-main" style="width: 120px; margin-left: 10px;">
+				<button id="button_submit" type="submit" class="btn btn-main" style="width: 120px; margin-left: 10px;">
 					SUBMIT 
 				</button>
 			</div>
@@ -407,5 +408,7 @@
 			</div>
 		</div> #}
 	</form>
-</div> 
+</div>
+
+
 {% endblock content %}

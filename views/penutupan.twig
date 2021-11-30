@@ -1,50 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>{{title}}</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "layout.twig" %}
 
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/css/util.css">
-	<link rel="stylesheet" type="text/css" href="{{base_url()}}/assets/comingsoon/css/main.css">
-<!--===============================================================================================-->
-</head>
-<body>
- {#   <div style="width:100%;text-align:center">#}
- {#   <img style="height:100vh" src="https://psbonlinesantiasromo.or.id/img/IMG_20191104_123207_787.jpeg"/>#}
-	{#</div>#}
-	
-	<div class="bg-img1 size1 overlay1">
-		<div class="size1 p-l-15 p-r-15 p-t-30 p-b-50">
-			<br>
-			<br>
-			<br>
-			<div class="wsize1 m-lr-auto">
-				<p class="txt-center l1-txt1 p-b-60">
-					Pendaftaran Online Santi Asromo telah ditutup
-				</p>
+{% block content %}
+<div>	
+	<div class="small-screen" style="margin-top: 100px; margin-bottom: 100px;">
+        <div class="self-padding" style="padding-bottom: 0;">
+            <div class="space space-center">
+                <h2 class="fonts fonts-32px bold black no-line-height" style="margin-bottom: 10px;">Pendaftaran Ditutup</h2>
+                <div class="width width-90 width-center">
+                    <p class="fonts fonts-16px grey">Pendaftaran Online Santi Asromo telah ditutup</p>
+                </div>
+                <div class="display-flex center">
+                    <div class="bottom-line" style="margin-top: 15px; margin-bottom: 15px;"></div>
+                </div>
+            </div>
+        </div>
+
+		<div style="position: relative; padding: 15px; padding-top: 15px;">
+            <div style="padding-bottom: 15px;">
+                <div class="fonts fonts-12 black semibold fonts-center" style="margin-bottom: 5px;">Jika mendapat kesulitan dalam pendaftaran silahkan hubungi:</div>
+            </div>
+
+			<div class="width width-60 width-mobile width-center">
+				<div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+					<div class="number small-number green">
+						<div class="val"><i class="fa fa-lw fa-phone"></i></div>
+					</div>
+					<div class="info">
+						<div style="padding: 0 15px;">
+							<div class="fonts fonts-11 black">+62 8131 2779 494 (Ust Ahmad Ubaidillah)</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-step" style="padding-top: 5px; padding-bottom: 8px;">
+					<div class="number small-number green">
+						<div class="val"><i class="fa fa-lw fa-phone"></i></div>
+					</div>
+					<div class="info">
+						<div style="padding: 0 15px;">
+							<div class="fonts fonts-11 black">+62 8131 0134 141 (Ustadzah Desi Susilawati)</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			
-		</div>
-	</div>
+        </div>
 
+        <div class="display-flex center" style="padding-top: 30px;">
+            <a href="{{base_url()}}/brosur/BROSUR_ASROMO_1.pdf" target="_blank">
+                <button class="btn btn-sekunder">
+                    <i class="icn icn-left fa fa-lw fa-file"></i>
+                    Download Brosur Terbaru
+                </button>
+            </a>
+        </div>
+    </div>
 
-
-	
-
-<!--===============================================================================================-->	
-	<script src="{{base_url()}}/assets/comingsoon/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="{{base_url()}}/assets/comingsoon/vendor/bootstrap/js/popper.js"></script>
-	<script src="{{base_url()}}/assets/comingsoon/vendor/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock content %}

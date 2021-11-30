@@ -127,12 +127,34 @@ $app->group('/wil', function () use ($app) {
         }
     });
 
-    
+    $app->get('/provinsi/{id_prov}', function ($request, $response, $args) {
+        try {
+            $id_prov = $args['id_prov'];
+            $sth = $this->db->prepare("select * from psb_provinsi where id_prov = '$id_prov'");
+            $sth->execute();
+            $data = $sth->fetchAll();
+            return $this->response->withJson($data);
+        } catch (Exception $e) {
+            return $this->response->withJson([]);
+        }
+    });
 
     $app->get('/kabupaten/{id_prov}', function ($request, $response, $args) {
         try {
             $id_prov = $args['id_prov'];
             $sth = $this->db->prepare("select * from psb_kabupaten where id_prov = '$id_prov'");
+            $sth->execute();
+            $data = $sth->fetchAll();
+            return $this->response->withJson($data);
+        } catch (Exception $e) {
+            return $this->response->withJson([]);
+        }
+    });
+
+    $app->get('/kabupaten/by_id/{id_kab}', function ($request, $response, $args) {
+        try {
+            $id_kab = $args['id_kab'];
+            $sth = $this->db->prepare("select * from psb_kabupaten where id_kab = '$id_kab'");
             $sth->execute();
             $data = $sth->fetchAll();
             return $this->response->withJson($data);

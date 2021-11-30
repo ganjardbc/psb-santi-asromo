@@ -18,11 +18,47 @@
                             </h1>
                         </div>
                         <div class="bottom-line"></div>
-                        <div class="width width-90 width-mobile" style="margin-bottom: 40px;">
+                        <div class="width width-90 width-mobile" style="margin-bottom: 30px;">
                             <p class="fonts fonts-16px grey">
                                 Selamat datang calon santri baru Pondok Mufidah Santi Asromo. Perhatikan semua informasi mengenai pendaftaran sebelum anda mulai mendaftar.
                             </p>
                         </div>
+                        {% if (tanggal_pembukaan) %}
+                            <div class="width width-90 width-mobile" style="margin-bottom: 15px;">
+                                <p class="fonts fonts-16px grey">
+                                    PSB Online Santi Asromo akan dibuka pada <span class="fonts fonts-16px grey semibold">{{tanggal_pembukaan | strftime('%A, %d %B %Y')}}</span>
+                                </p>
+                            </div>
+                            <div class="width width-90 width-mobile display-flex space-between cd100" style="margin-bottom: 30px;">
+                                <div style="padding: 0 10px; width: calc(100% - 20px);">
+                                    <div class="card box-shadow content-center">
+                                        <div class="fonts fonts-16 black semibold center days" style="margin-bottom: 0;"></div>
+                                        <div class="fonts fonts-10 center black regular">Hari</div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 0 10px; width: calc(100% - 20px);">
+                                    <div class="card box-shadow content-center">
+                                        <div class="fonts fonts-16 black semibold center hours" style="margin-bottom: 0;"></div>
+                                        <div class="fonts fonts-10 center black regular">Jam</div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 0 10px; width: calc(100% - 20px);">
+                                    <div class="card box-shadow content-center">
+                                        <div class="fonts fonts-16 black semibold center minutes" style="margin-bottom: 0;"></div>
+                                        <div class="fonts fonts-10 center black regular">Menit</div>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 0 10px; width: calc(100% - 20px);">
+                                    <div class="card box-shadow content-center">
+                                        <div class="fonts fonts-16 black semibold center seconds" style="margin-bottom: 0;"></div>
+                                        <div class="fonts fonts-10 center black regular">Detik</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                     <div style="width: 100%;">
                         <div class="display-flex">
@@ -110,7 +146,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div> 
@@ -278,6 +313,23 @@
 
         </div>
     </div>
+
+    <script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment.min.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment-timezone.min.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/moment-timezone-with-data.min.js"></script>
+	<script src="{{base_url()}}/assets/comingsoon/vendor/countdowntime/countdowntime.js"></script>
+	<script>
+		var tanggal_pembukaan = '{{tanggal_pembukaan}}';
+		var arr_tanggal = tanggal_pembukaan.split('-');
+		$('.cd100').countdown100({
+			endtimeYear: arr_tanggal[0],
+			endtimeMonth: arr_tanggal[1],
+			endtimeDate: arr_tanggal[2],
+			endtimeHours: 00,
+			endtimeMinutes: 00,
+			endtimeSeconds: 00
+		});
+	</script>
 
 </div>
 {% endblock content %}
